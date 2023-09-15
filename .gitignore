@@ -1,1 +1,3 @@
 venv/
+db.sqlite3
+Haly/Haly/__pycache__/
