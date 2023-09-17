@@ -1,0 +1,109 @@
+{% load static %}
+
+<style>
+    h3, span {
+        font-family: 'Playfair Display', serif;
+    }
+</style>
+
+<section id="gallery" class="text-center section section-md bg-default text-md-left">
+    <div class="container-wide">
+        <div class="row align-items-center row-10">
+            <div class="col-md-6">
+                <h3>Наши Изделия</h3>
+            </div>
+            <div class="col-md-6 text-md-right">
+                <a class="heading-link link-gray-darker"
+                   href="{% url 'gallery_ru' %}"> <span>Показать все</span>
+                </a>
+            </div>
+        </div>
+        <hr>
+
+        <div class="isotope-wrap">
+            <div class="row isotope" data-isotope-layout="masonry" data-isotope-group="gallery"
+                 data-lightgallery="group">
+                <div class="col-12 col-md-6 col-lg-3 grid-sizer"></div>
+
+
+                <div class="col-12 col-md-6 col-lg-3 isotope-item wow fadeInLeft" data-filter="Category 1"
+                     data-wow-delay=".1s">
+                    <a class="portfolio-item thumbnail-classic"
+                       href="{% static 'images/haly/68-1374714-152x104-01.jpg' %}"
+                       data-lightgallery="item">
+                        <figure>
+                            <img src="{% static 'images/haly/68-1374714-152x104-01.jpg' %}" alt=""
+                                 style="width: 420px; height: 584px; object-fit: cover;">
+                        </figure>
+                    </a>
+                </div>
+
+
+                <div class="col-12 col-md-6 col-lg-3 isotope-item wow fadeInDown" data-filter="Category 1"
+                     data-wow-delay=".2s">
+                    <a class="portfolio-item thumbnail-classic"
+                       href="{% static 'images/haly/20220815_dhouse_00058.jpg' %}"
+                       data-lightgallery="item">
+                        <figure>
+                            <img src="{% static 'images/haly/20220815_dhouse_00058.jpg' %}" alt=""
+                                 style="width: 420px; height: 278px; object-fit: cover">
+                        </figure>
+                    </a>
+                </div>
+
+
+                <div class="col-12 col-md-6 col-lg-3 isotope-item wow fadeInDown" data-filter="Category 1"
+                     data-wow-delay=".4s">
+                    <a class="portfolio-item thumbnail-classic"
+                       href="{% static 'images/haly/20220815_dhouse_00060.jpg' %}"
+                       data-lightgallery="item">
+                        <figure>
+                            <img src="{% static 'images/haly/20220815_dhouse_00060.jpg' %}" alt=""
+                                 style="width: 420px; height: 584px; object-fit: cover">
+                        </figure>
+                    </a>
+                </div>
+
+
+                <div class="col-12 col-md-6 col-lg-3 isotope-item wow fadeInRight" data-filter="Category 1"
+                     data-wow-delay=".5s">
+                    <a class="portfolio-item thumbnail-classic"
+                       href="{% static 'images/haly/20210805_dhouse_00716.jpg' %}"
+                       data-lightgallery="item">
+                        <figure>
+                            <img src="{% static 'images/haly/20210805_dhouse_00716.jpg' %}" alt=""
+                                 style="width: 420px; height: 278px; object-fit: cover"/>
+                        </figure>
+                    </a>
+                </div>
+
+
+                <div class="col-12 col-md-6 col-lg-3 isotope-item wow fadeInUp" data-filter="Category 1"
+                     data-wow-delay=".3s">
+                    <a class="portfolio-item thumbnail-classic"
+                       href="{% static 'images/haly/20220815_dhouse_00062.jpg' %}"
+                       data-lightgallery="item">
+                        <figure>
+                            <img src="{% static 'images/haly/20220815_dhouse_00062.jpg' %}" alt=""
+                                 style="width: 420px; height: 278px; object-fit: cover"/>
+                        </figure>
+                    </a></div>
+
+
+                <div class="col-12 col-md-6 col-lg-3 isotope-item wow fadeInRight" data-filter="Category 1"
+                     data-wow-delay=".6s">
+                    <a class="portfolio-item thumbnail-classic"
+                       href="{% static 'images/haly/20220815_dhouse_00063.jpg' %}"
+                       data-lightgallery="item">
+                        <figure>
+                            <img src="{% static 'images/haly/20220815_dhouse_00063.jpg' %}" alt=""
+                                 style="width: 420px; height: 278px; object-fit: cover">
+                        </figure>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
