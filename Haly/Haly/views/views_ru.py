@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from Gallery.models import GalleryModel
 
 
 def home(req):
@@ -18,7 +19,8 @@ def about_us(req):
 
 
 def gallery(req):
-    return render(req, 'ru/gallery/full-grid-gallery.html')
+    images = GalleryModel.objects.all()
+    return render(req, 'ru/gallery/full-grid-gallery.html', {'gallery_ru': images})
 
 
 def blog(req):
