@@ -19,3 +19,7 @@ def about_us(req):
 
 def gallery(req):
     return render(req, 'ru/gallery/full-grid-gallery.html')
+
+
+def blog(req):
+    return render(req, 'ru/blog/blog.html')

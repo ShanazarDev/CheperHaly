@@ -25,7 +25,8 @@ urlpatterns_ru = [
     path('news/', views_ru.news, name='news_ru'),
     path('news_one/', views_ru.news_one, name='news_ru_one'),
     path('about-us/', views_ru.about_us, name='about_us_ru'),
-    path('gallery/', views_ru.gallery, name='gallery_ru')
+    path('gallery/', views_ru.gallery, name='gallery_ru'),
+    path('blog/', views_ru.blog, name='blog_ru')
 
 ]
 
