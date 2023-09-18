@@ -7,7 +7,6 @@
 
 {% block body %}
 
-
     <main>
         <section id="home" class="section section-layout section-xxs">
             {#background image#}
@@ -38,12 +37,12 @@
                             <div class="section-layout-aside">
                                 <div class="section-layout-aside__item">
                                     <a class="thumb-modern" href="{% url 'news_ru' %}">
-                                        <span style="font-family: 'Playfair Display', serif;" class="font-weight-bold">Новости</span>
+                                        <span style="font-family: 'Poppins', sans-serif;" class="font-weight-bold">Новости</span>
                                     </a>
                                 </div>
                                 <div class="section-layout-aside__item">
                                     <a class="thumb-modern" href="{% url 'home_ru' %}#gallery">
-                                        <span style="font-family: 'Playfair Display', serif;" class="font-weight-bold">Ковры</span>
+                                        <span style="font-family: 'Poppins', sans-serif;" class="font-weight-bold">Ковры</span>
                                     </a>
                                 </div>
                             </div>
@@ -60,8 +59,10 @@
                             <div class="jp-video jp-video-single">
                                 <div class="jp-type-playlist">
                                     <ul class="jp-player-list">
-                                        <li class="jp-player-list-item" data-jp-m4v="video/video.mp4"
-                                            data-jp-title="local video" data-jp-poster="assets/img/video-bg.jpg">
+                                        <li class="jp-player-list-item"
+                                            data-jp-m4v="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}"
+                                            data-jp-title="local video"
+                                            data-jp-poster="{% static 'images/turk32.jpg' %}">
                                         </li>
                                     </ul>
                                     <div class="jp-jplayer"></div>
