@@ -13,7 +13,8 @@
 
 {% block body %}
     <div class="container py-4 py-xl-5">
-        <div class="carousel slide" data-bs-ride="carousel" id="carousel-1" style="height: 600px;">
+    <h2>Главные Новости</h2>
+        <div class="carousel slide pt-4" data-bs-ride="carousel" id="carousel-1" style="height: 600px;">
             <div class="carousel-inner h-100">
                 <div class="carousel-item active h-100"><img class="w-100 d-block position-absolute h-100 fit-cover"
                                                              src="{% static 'images/grid-gallery-3-640x426.jpg' %}"
@@ -64,7 +65,7 @@
         </div>
     </div>
 
-    <div class="container py-4 py-xl-5">
+    <div class="container py-4 py-xl-5 mt-0">
         <div class="row mb-5">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
                 <h2>Новости</h2>
@@ -102,6 +103,11 @@
             </div>
         </div>
     </div>
+    <style>
+    h1, h2, h3, p, span{
+    font-family: 'Playfair Display', serif;
+    }
+    </style>
     <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
 
 {% endblock %}
