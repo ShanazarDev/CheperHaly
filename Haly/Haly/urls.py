@@ -19,11 +19,12 @@ from django.urls import path, include
 from .views import (views_ru, views_en, views_tm)
 from django.conf.urls.static import static
 from django.conf import settings
+from .settings import DEBUG
 
 urlpatterns_ru = [
     path('', views_ru.home, name='home_ru'),
     path('news/', views_ru.news, name='news_ru'),
-    path('news_one/', views_ru.news_one, name='news_ru_one'),
+    path(r'news/<title>', views_ru.news_one, name='news_ru_one'),
     path('about-us/', views_ru.about_us, name='about_us_ru'),
     path('gallery/', views_ru.gallery, name='gallery_ru'),
     path('blog/', views_ru.blog, name='blog_ru')
@@ -34,8 +35,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('ru/', include(urlpatterns_ru))
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = 'Ceper Haly Muzei'
 admin.site.site_title = 'Ceper Haly Muzei'

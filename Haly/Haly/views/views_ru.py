@@ -8,12 +8,23 @@ def home(req):
 
 
 def news(req):
-    return render(req, 'ru/news/news_all.html')
+    all_news = NewsModel.objects.all()
+    top_news = [t for t in NewsModel.objects.filter(istop=True).all()[:2]]
+    context = {
+        'all_news': all_news,
+        'top_news': top_news
+    }
+    return render(req, 'ru/news/news_all.html', context)
 
 
-def news_one(req):
-    news = NewsModel.objects.all()
-    return render(req, 'ru/news/news_one.html', {'news': news})
+def news_one(req, title):
+    filtered_news = NewsModel.objects.filter(slug_title_ru=title).all()
+    recent_news = NewsModel.objects.all().order_by('-pk')[:2]
+    context = {
+        'news': filtered_news,
+        'recent_news': recent_news
+    }
+    return render(req, 'ru/news/news_one.html', context)
 
 
 def about_us(req):

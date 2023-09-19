@@ -1,0 +1,101 @@
+{% load static %}
+
+<section class="text-center section section-md bg-default text-md-left">
+    <div class="container-wide">
+        <div class="row justify-content-sm-center row-75 overflow-hidden">
+            <div class="col-xl-6 offset-xl-0 wow fadeInUp" data-wow-delay=".2s">
+                <div class="tabs-custom tabs-horizontal tabs-complex" id="tabs-2">
+                    <div class="tabs-complex-title">
+                        <h3>Цены</h3>
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item"><a class="nav-link active" data-toggle="tab"
+                                                    href="#tabs-2-1" style="font-size: 14px;">Большие ковры</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tabs-2-2"
+                                                    style="font-size: 14px;">Изделие из&nbsp; ковров</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tabs-2-3"
+                                                    style="font-size: 14px;">Аксессуары</a></li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="tab-content">
+                        <div class="bounce animated tab-pane fadeInDown active" id="tabs-2-1">
+                            <div class="services-single-box">
+                                <div class="services-single-header">
+                                    <div class="services-single-title"><span>  Teke </span></div>
+                                    <div class="services-single-price"><span>1500 тмт</span></div>
+                                </div>
+                                <p class="services-single-body"> description from db</p>
+                            </div>
+                            <div class="services-single-box">
+                                <div class="services-single-header">
+                                    <div class="services-single-title"><span> Ersari </span></div>
+                                    <div class="services-single-price"><span>1750 тмт</span></div>
+                                </div>
+                                <p class="services-single-body">description from db</p>
+                            </div>
+                            <div class="services-single-box">
+                                <div class="services-single-header">
+                                    <div class="services-single-title"><span> Yomut </span>
+                                    </div>
+                                    <div class="services-single-price"><span>2000 тмт</span></div>
+                                </div>
+                                <p class="services-single-body"> description from db</p>
+                            </div>
+                        </div>
+                        <div class="bounce animated tab-pane fadeInDown" id="tabs-2-2">
+                            <div class="services-single-box">
+                                <div class="services-single-header">
+                                    <div class="services-single-title"><span>Test</span></div>
+                                    <div class="services-single-price"><span>$35</span></div>
+                                </div>
+                                <p class="services-single-body"> description from db </p>
+                            </div>
+                            <div class="services-single-box">
+                                <div class="services-single-header">
+                                    <div class="services-single-title"><span> Test </span></div>
+                                    <div class="services-single-price"><span>$28</span></div>
+                                </div>
+                                <p class="services-single-body"> description from db</p>
+                            </div>
+                            <div class="services-single-box">
+                                <div class="services-single-header">
+                                    <div class="services-single-title"><span>Test</span></div>
+                                    <div class="services-single-price"><span>$21</span></div>
+                                </div>
+                                <p class="services-single-body"> description from db
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bounce animated tab-pane fadeInDown" id="tabs-2-3">
+                            <div class="services-single-box">
+                                <div class="services-single-header">
+                                    <div class="services-single-title"><span>Test</span></div>
+                                    <div class="services-single-price"><span>$48</span></div>
+                                </div>
+                                <p class="services-single-body"> description from db</p>
+                            </div>
+                            <div class="services-single-box">
+                                <div class="services-single-header">
+                                    <div class="services-single-title"><span>Test</span></div>
+                                    <div class="services-single-price"><span>$26</span></div>
+                                </div>
+                                <p class="services-single-body"> description from db </p>
+                            </div>
+                            <div class="services-single-box">
+                                <div class="services-single-header">
+                                    <div class="services-single-title"><span>Test</span></div>
+                                    <div class="services-single-price"><span>$42</span></div>
+                                </div>
+                                <p class="services-single-body">description from db</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {#rates#}
+            {% include 'ru/history.html' %}
+        </div>
+    </div>
+</section>
