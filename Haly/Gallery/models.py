@@ -30,6 +30,8 @@ class GalleryModel(models.Model):
     category = models.CharField(max_length=50, verbose_name='Категория картиины', blank=False, null=False,
                                 choices=category_choice, default='Category 1')
 
+    price = models.IntegerField(verbose_name='Стоисомть ковра', default=0)
+
     def image_to_admin(self):
         from django.utils.safestring import mark_safe
         return mark_safe('<img src="{}" width="100" />'.format(self.image.url))

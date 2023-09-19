@@ -31,9 +31,11 @@ urlpatterns_ru = [
 ]
 
 urlpatterns = [
-                  path('admin/', admin.site.urls),
-                  path('ru/', include(urlpatterns_ru))
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('admin/', admin.site.urls),
+    path('ru/', include(urlpatterns_ru))
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = 'Ceper Haly Muzei'
 admin.site.site_title = 'Ceper Haly Muzei'
