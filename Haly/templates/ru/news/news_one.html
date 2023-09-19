@@ -16,41 +16,28 @@
         <div class="row">
             <div class="col-md-8 col-xxl-12">
                 <section>
-                    <div class="img-fluid border rounded-3 blurIn"
-                         style="height: 450px; margin-top: 20px;
-                                 background: url({% static 'images/haly/20220815_dhouse_00063.jpg' %}) center / cover;
-                                 padding-left: 12px;padding-right: 12px;">
+                    {% for n in news %}
+                        <div class="img-fluid border rounded-3 blurIn"
+                             style="height: 450px; margin-top: 20px;
+                                     background: url({{ n.image.url }}) center / cover;
+                                     padding-left: 12px;padding-right: 12px;">
 
-                    </div>
+                        </div>
+                    {% endfor %}
                 </section>
             </div>
             <div class="col-md-4 col-xxl-12">
                 <section class="photo-gallery py-4 py-xl-5">
                     <div class="container">
-                        <div class="row mb-5">
-                            <div class="col-md-8 col-xl-6 text-break text-center mx-auto">
-                                <h2>News Heading</h2>
-                                <p class="w-lg-50">Sort description</p>
+                        {% for n in news%}
+                            <div class="row mb-5">
+                                <div class="col-md-8 col-xl-6 text-break text-center mx-auto">
+                                    <h2>{{ n.title }}</h2>
+                                    <p class="w-lg-50">{{ n.short_description }}</p>
+                                </div>
                             </div>
-                        </div>
-                        <p class="text-break" style="padding-left: 12px; font-size: medium">
-                            Curae hendrerit donec commodo hendrerit egestas tempus, turpis
-                            facilisis nostra nunc. Vestibulum dui eget ultrices.Curae hendrerit donec commodo
-                            hendrerit egestas tempus, turpis
-                            facilisis nostra nunc. Vestibulum dui eget ultrices.Curae hendrerit donec commodo
-                            hendrerit egestas tempus, turpis
-                            facilisis nostra nunc. Vestibulum dui eget ultrices.Curae hendrerit donec commodo
-                            hendrerit egestas tempus, turpis
-                            facilisis nostra nunc. Vestibulum dui eget ultrices.Curae hendrerit donec commodo
-                            hendrerit egestas tempus, turpis
-                            facilisis nostra nunc. Vestibulum dui eget ultrices.Curae hendrerit donec commodo
-                            hendrerit egestas tempus, turpis
-                            facilisis nostra nunc. Vestibulum dui eget ultrices.Curae hendrerit donec commodo
-                            hendrerit egestas tempus, turpis
-                            facilisis nostra nunc. Vestibulum dui eget ultrices.Curae hendrerit donec commodo
-                            hendrerit egestas tempus, turpis
-                            facilisis nostra nunc. Vestibulum dui eget ultrices.
-                        </p>
+                            {{ n.text|safe }}
+                        {% endfor %}
                     </div>
                 </section>
             </div>

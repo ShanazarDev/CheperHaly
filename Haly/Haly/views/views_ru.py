@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from Gallery.models import GalleryModel
+from News.models import NewsModel
 
 
 def home(req):
@@ -11,7 +12,8 @@ def news(req):
 
 
 def news_one(req):
-    return render(req, 'ru/news/news_one.html')
+    news = NewsModel.objects.all()
+    return render(req, 'ru/news/news_one.html', {'news': news})
 
 
 def about_us(req):
