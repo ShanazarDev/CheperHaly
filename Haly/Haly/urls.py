@@ -33,8 +33,16 @@ urlpatterns_ru = [
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ru/', include(urlpatterns_ru))
+    path('ru/', include(urlpatterns_ru)),
+    path('', views_tm.home, name='home'),
+    path('news/', views_tm.news, name='news'),
+    path(r'news/<title>', views_tm.news_one, name='news_one'),
+    path('about-us/', views_tm.about_us, name='about_us'),
+    path('gallery/', views_tm.gallery, name='gallery'),
+    path('blogs/', views_tm.blogs, name='blog'),
+    path('blog/post/<title>', views_tm.blog_post, name='blog_post')
 ]
+
 if DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

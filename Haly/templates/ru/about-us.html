@@ -1,13 +1,18 @@
 {% extends 'ru/base.html' %}
 {% load static %}
 
-{% block titile %}
+{% block title %}
     Туркмен Халы - О нас
 {% endblock %}
 
 {% block active_about_us %}
     active
 {% endblock %}
+
+{% block lang_tm %}
+	{% url 'about_us' %}
+{% endblock %}
+
 
 {% block body %}
     {% if background %}

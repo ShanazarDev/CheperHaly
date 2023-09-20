@@ -1,114 +1,144 @@
-{% extends 'ru/base.html' %}
+{% extends 'tm/base.html' %}
 {% load static %}
 
 {% block titile %}
-    Туркмен Халы
+    Türkmen Haly Muzeýi
+{% endblock %}
+
+{% block active_main %}
+    active
+{% endblock %}
+
+{% block lang_ru %}
+	{% url 'home_ru' %}
 {% endblock %}
 
 {% block body %}
-
     <main>
         <section id="home" class="section section-layout section-xxs">
             {#background image#}
-            <div class="container-wide bg-image bg-image-full"
-                 style="background-image: url({% static 'images/for_background.jpg' %});">
-                <div class="row justify-content-sm-center row-30 row-custom">
-                    <div class="col-md-12 col-xl-7">
-                        <div class="section-layout-main">
-                            <div class="section-main-content">
-                                <div class="container text-md-left">
-                                    <h1 class="text-break"
-                                        style="font-size: 50px;text-align: left;margin-bottom: 16px; ">Ашхабадское
-                                        предприятие<br><strong>художественных ковров</strong></h1>
-                                    <div class="slider-subtitle-group" style="margin-left: 2px;">
-                                        <div class="decoration-line"></div>
-                                        <h4>Лучшие ковры в</h4>
-                                        <h3>Средней Азии</h3>
-                                    </div>
-                                    <a
-                                            class="button button-effect-ujarak button-lg button-primary-2 button-square"
-                                            href="{% url 'home_ru' %}#gallery"><span>Подробно</span></a>
+            {% if background %}
+                {% for b in background %}
+                    <div class="container-wide bg-image bg-image-full"
+                         style="background-image: url({{ b.image.url }});">
+                {% endfor %}
+            {% else %}
+                <div class="container-wide bg-image bg-image-full"
+                     style="background-image: url({% static 'images/for_background.jpg' %});">
+            {% endif %}
+
+            <div class="row justify-content-sm-center row-30 row-custom">
+                <div class="col-md-12 col-xl-7">
+                    <div class="section-layout-main">
+                        <div class="section-main-content">
+                            <div class="container text-md-left">
+                                <h1 class="text-break"
+                                    style="font-size: 50px;text-align: left;margin-bottom: 16px; ">Aşgabat şäheriniň<br>
+                                    <strong>çeper halylar kärhanasy</strong>
+                                </h1>
+                                <div class="slider-subtitle-group" style="margin-left: 2px;">
+                                    <div class="decoration-line"></div>
+                                    <h4>Merkezi Aziýanyň</h4>
+                                    <h3>iň gowy halylary</h3>
                                 </div>
+                                <a class="button button-effect-ujarak button-lg button-primary-2 button-square"
+                                   href="{% url 'home' %}#gallery">
+                                    <span>Giňişleýin</span>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 col-xl-5 d-xl-flex">
-                        <div class="row justify-content-sm-center row-30" style="flex:1 1 auto;">
-                            <div class="section-layout-aside">
-                                <div class="section-layout-aside__item">
-                                    <a class="thumb-modern" href="{% url 'news_ru' %}">
-                                        <span style="font-family: 'Poppins', sans-serif;" class="font-weight-bold">Новости</span>
-                                    </a>
-                                </div>
-                                <div class="section-layout-aside__item">
-                                    <a class="thumb-modern" href="{% url 'home_ru' %}#gallery">
-                                        <span style="font-family: 'Poppins', sans-serif;" class="font-weight-bold">Ковры</span>
-                                    </a>
-                                </div>
+                </div>
+                <div class="col-md-12 col-xl-5 d-xl-flex">
+                    <div class="row justify-content-sm-center row-30" style="flex:1 1 auto;">
+                        <div class="section-layout-aside">
+                            <div class="section-layout-aside__item">
+                                <a class="thumb-modern" href="{% url 'news' %}">
+                                    <span style="font-family: 'Poppins', sans-serif;"
+                                          class="font-weight-bold">Täzelikler</span>
+                                </a>
+                            </div>
+                            <div class="section-layout-aside__item">
+                                <a class="thumb-modern" href="{% url 'home' %}#gallery">
+                                        <span style="font-family: 'Poppins', sans-serif;"
+                                              class="font-weight-bold">Halylar</span>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            </div>
         </section>
         <section id="about-us" class="text-center section section-md bg-default text-md-left">
             <div class="container-wide">
                 <div class="row justify-content-sm-center row-50 overflow-hidden">
-                    <div class="col-lg-6 col-xl-7 wow fadeInUp" data-wow-delay=".2s">
-                        <div class="jp-video-init">
-                            <div class="jp-video jp-video-single">
-                                <div class="jp-type-playlist">
-                                    <ul class="jp-player-list">
-                                        <li class="jp-player-list-item"
-                                            data-jp-m4v="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}"
-                                            data-jp-title="local video"
-                                            data-jp-poster="{% static 'images/turk32.jpg' %}">
-                                        </li>
-                                    </ul>
-                                    <div class="jp-jplayer"></div>
-                                    <div class="jp-gui">
-                                        <div class="jp-interface">
-                                            <div class="jp-controls-holder"><a class="jp-play mdi mdi-play"
-                                                                               tabindex="1"></a><a
-                                                    class="jp-pause mdi mdi-pause"
-                                                    tabindex="1"></a></div>
-                                        </div>
-                                    </div>
-                                    <div class="jp-playlist">
-                                        <ul>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-lg-6 col-xl-7 wow fadeInUp justify-content-md-center" data-wow-delay=".2s">
+                        <video
+                                controls
+                                preload="none"
+                                width="100%"
+                                height="auto"
+                                poster="{% static 'images/bg-image-08.jpg' %}"
+                                data-setup="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}"
+                        >
+                            <source src="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}" type="video/mp4"/>
+                        </video>
+
+
+                        {#                                                <div class="jp-video-init">#}
+                        {#                                                    <div class="jp-video jp-video-single">#}
+                        {#                                                        <div class="jp-type-playlist">#}
+                        {#                                                            <ul class="jp-player-list">#}
+                        {#                                                                <li class="jp-player-list-item"#}
+                        {#                                                                    data-jp-m4v="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}"#}
+                        {#                                                                    data-jp-title="local video"#}
+                        {#                                                                    data-jp-poster="{% static 'images/turk32.jpg' %}">#}
+                        {#                                                                </li>#}
+                        {#                                                            </ul>#}
+                        {#                                                            <div class="jp-jplayer"></div>#}
+                        {#                                                            <div class="jp-gui">#}
+                        {#                                                                <div class="jp-interface">#}
+                        {#                                                                    <div class="jp-controls-holder">#}
+                        {#                                                                        <a class="jp-play mdi mdi-play" tabindex="1"></a>#}
+                        {#                                                                        <a class="jp-pause mdi mdi-pause" tabindex="1"></a></div>#}
+                        {#                                                                </div>#}
+                        {#                                                            </div>#}
+                        {#                                                            <div class="jp-playlist">#}
+                        {#                                                                <ul>#}
+                        {#                                                                    <li></li>#}
+                        {#                                                                </ul>#}
+                        {#                                                            </div>#}
+                        {#                                                        </div>#}
+                        {#                                                    </div>#}
+                        {#                                                </div>#}
                     </div>
                     <div class="col-lg-6 col-xl-5 d-flex wow fadeInDown" data-wow-delay=".3s">
                         <div class="bg-secondary-3 section-wrap-content-var-1">
                             <div class="section-wrap-content-var-1-inner ">
-                                <h2>О нас</h2>
-                                <p class="text-left mt-3"> Государственное объединение «Туркменхалы» является основным
-                                    поставщиком на мировой
-                                    рынок знаменитых туркменских чистошерстяных ворсовых ковров ручной выработки из
-                                    Туркменистана.
-                                    Основными видами деятельности объединия являются производство и реализация
-                                    туркменских ковров и ковровых изделий, сохранение традиций ручного ковроделия,
-                                    восстановление старинных ковровых орнаментов и изделий.
-                                    ГО «Туркменхалы» в своем составе объединяет 8 предприятий художественного
-                                    ковроделия, которые имеют несколько ковровых участков и цехов, расположенных во всех
-                                    велаятах Туркменистана. На предприятиях художественного ковроделия работают около 5
-                                    тыс. ковровщиц.
+                                <h2>Biz barada</h2>
+                                <p class="text-left mt-3">
+                                    “Türkmenhaly” döwlet birleşigi Türkmenistandan arassa ýüň ýüplerden dokalýan meşhur
+                                    türkmen el halylaryny dünýä bazaryna iberýän esasy tarap bolup durýar.
+                                    Birleşigiň esasy wezipesi türkmen el haly we haly önümlerini öndürmekden, halyny
+                                    dokamagyň usullaryny ulanmakdan, gadymy haly nagyşlaryny we şu ugra degişli irki
+                                    önümleri gaýtadan dikeltmekden ybaratdyr.
+                                    “Türkmenhaly” döwlet birleşiginiň düzümine çeper halyçylyk kärhanalarynyň 8-si
+                                    degişli bolup, bular Türkmenistanyň ähli welaýatlarynda ýerleşýän ençeme halyçylyk
+                                    bölümlerini we sehleri özünde jemleýär. Bu çeper halyçylyk kärhanalarynda 5 müňe
+                                    golaý halyçy zenanlar işleýär.
                                 </p>
 
                                 <div class="d-flex group">
                                     <dl class="list-desc">
-                                        <dt>Пн-Пт:</dt>
+                                        <dt>Duşenbe-Anna:</dt>
                                         <dd><span>09:00–18:00</span></dd>
                                     </dl>
                                 </div>
-                                <a
-                                        class="button button-effect-ujarak button-lg button-secondary-outline-2 button-square"
-                                        href="{% url 'about_us_ru' %}"><span>Читать дальше...</span></a>
+                                <a class="button button-effect-ujarak button-lg button-secondary-outline-2 button-square"
+                                   href="{% url 'about_us' %}">
+                                    <span>Giňişleýin...</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -116,11 +146,10 @@
             </div>
         </section>
         {#gallery#}
-        {% include 'ru/gallery/gallery-for-home.html' %}
+        {% include 'tm/gallery/gallery-for-home.html' %}
         {#price#}
-        {% include 'ru/price.html' %}
+        {% include 'tm/price.html' %}
         {#Blog#}
-        {% include 'ru/blog/blog-for-home.html' %}
+        {% include 'tm/blog/blog-for-home.html' %}
     </main>
-
 {% endblock %}

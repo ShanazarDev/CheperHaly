@@ -11,6 +11,13 @@
     active
 {% endblock %}
 
+{% block lang_tm %}
+    {% for b in blog %}
+        {% url 'blog_post' title=b.slug_title %}
+    {% endfor %}
+{% endblock %}
+
+
 {% block body %}
     <div class="container">
         <div class="row">

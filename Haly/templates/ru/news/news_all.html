@@ -1,7 +1,7 @@
 {% extends 'ru/base.html' %}
 {% load static %}
 
-{% block titile %}
+{% block title %}
     Новости
 {% endblock %}
 
@@ -9,8 +9,8 @@
     active
 {% endblock %}
 
-{% block style %}
-    <link rel="stylesheet" href="{% static 'assets/css/Projects-Grid-images.css' %}">
+{% block lang_tm %}
+	{% url 'news' %}
 {% endblock %}
 
 {% block body %}
@@ -137,6 +137,6 @@
             font-family: 'Poppins', sans-serif;
         }
     </style>
-    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+{#    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>#}
 
 {% endblock %}

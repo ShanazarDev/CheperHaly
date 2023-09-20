@@ -9,8 +9,11 @@
     active
 {% endblock %}
 
-{% block body %}
+{% block lang_tm %}
+	{% url 'home' %}
+{% endblock %}
 
+{% block body %}
     <main>
         <section id="home" class="section section-layout section-xxs">
             {#background image#}
@@ -72,49 +75,51 @@
             <div class="container-wide">
                 <div class="row justify-content-sm-center row-50 overflow-hidden">
                     <div class="col-lg-6 col-xl-7 wow fadeInUp justify-content-md-center" data-wow-delay=".2s">
-                        <video
-                                controls
-                                preload="auto"
-                                width="100%"
-                                height="auto"
-{#                                poster="{% static 'images/bg-image-08.jpg' %}"#}
-                                data-setup="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}"
-                        >
-                            <source src="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}" type="video/mp4"/>
-                        </video>
+                                                <video
+                                                        controls
+                                                        preload="none"
+                                                        width="100%"
+                                                        height="auto"
+                                                        poster="{% static 'images/bg-image-08.jpg' %}"
+                                                        data-setup="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}"
+                                                >
+                                                    <source src="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}" type="video/mp4"/>
+                                                </video>
 
-{#                                                <div class="jp-video-init">#}
-{#                                                    <div class="jp-video jp-video-single">#}
-{#                                                        <div class="jp-type-playlist">#}
-{#                                                            <ul class="jp-player-list">#}
-{#                                                                <li class="jp-player-list-item"#}
-{#                                                                    data-jp-m4v="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}"#}
-{#                                                                    data-jp-title="local video"#}
-{#                                                                    data-jp-poster="{% static 'images/turk32.jpg' %}">#}
-{#                                                                </li>#}
-{#                                                            </ul>#}
-{#                                                            <div class="jp-jplayer"></div>#}
-{#                                                            <div class="jp-gui">#}
-{#                                                                <div class="jp-interface">#}
-{#                                                                    <div class="jp-controls-holder">#}
-{#                                                                        <a class="jp-play mdi mdi-play" tabindex="1"></a>#}
-{#                                                                        <a class="jp-pause mdi mdi-pause" tabindex="1"></a></div>#}
-{#                                                                </div>#}
-{#                                                            </div>#}
-{#                                                            <div class="jp-playlist">#}
-{#                                                                <ul>#}
-{#                                                                    <li></li>#}
-{#                                                                </ul>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                </div>#}
+
+                        {#                                                <div class="jp-video-init">#}
+                        {#                                                    <div class="jp-video jp-video-single">#}
+                        {#                                                        <div class="jp-type-playlist">#}
+                        {#                                                            <ul class="jp-player-list">#}
+                        {#                                                                <li class="jp-player-list-item"#}
+                        {#                                                                    data-jp-m4v="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}"#}
+                        {#                                                                    data-jp-title="local video"#}
+                        {#                                                                    data-jp-poster="{% static 'images/turk32.jpg' %}">#}
+                        {#                                                                </li>#}
+                        {#                                                            </ul>#}
+                        {#                                                            <div class="jp-jplayer"></div>#}
+                        {#                                                            <div class="jp-gui">#}
+                        {#                                                                <div class="jp-interface">#}
+                        {#                                                                    <div class="jp-controls-holder">#}
+                        {#                                                                        <a class="jp-play mdi mdi-play" tabindex="1"></a>#}
+                        {#                                                                        <a class="jp-pause mdi mdi-pause" tabindex="1"></a></div>#}
+                        {#                                                                </div>#}
+                        {#                                                            </div>#}
+                        {#                                                            <div class="jp-playlist">#}
+                        {#                                                                <ul>#}
+                        {#                                                                    <li></li>#}
+                        {#                                                                </ul>#}
+                        {#                                                            </div>#}
+                        {#                                                        </div>#}
+                        {#                                                    </div>#}
+                        {#                                                </div>#}
                     </div>
                     <div class="col-lg-6 col-xl-5 d-flex wow fadeInDown" data-wow-delay=".3s">
                         <div class="bg-secondary-3 section-wrap-content-var-1">
                             <div class="section-wrap-content-var-1-inner ">
                                 <h2>О нас</h2>
-                                <p class="text-left mt-3"> Государственное объединение «Туркменхалы» является основным
+                                <p class="text-left mt-3">
+                                    Государственное объединение «Туркменхалы» является основным
                                     поставщиком на мировой
                                     рынок знаменитых туркменских чистошерстяных ворсовых ковров ручной выработки из
                                     Туркменистана.

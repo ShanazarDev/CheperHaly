@@ -6,11 +6,15 @@
 {% endblock %}
 
 {% block style %}
-    <link rel="stylesheet" href="{% static 'assets/css/Projects-Grid-images.css' %}">
+{#    <link rel="stylesheet" href="{% static 'assets/css/Projects-Grid-images.css' %}">#}
 {% endblock %}
 
 {% block active_blog %}
     active
+{% endblock %}
+
+{% block lang_tm %}
+	{% url 'blog' %}
 {% endblock %}
 
 {% block body %}
@@ -137,6 +141,6 @@
             font-family: 'Poppins', sans-serif;
         }
     </style>
-    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+{#    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>#}
 
 {% endblock %}

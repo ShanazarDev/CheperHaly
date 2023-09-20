@@ -1,11 +1,46 @@
-{% extends 'ru/base.html' %}
+{% extends 'tm/base.html' %}
 {% load static %}
-{% block titile %}
-    Туркмен Халы - О нас
+
+{% block title %}
+    Türkmen Haly - Biz barada
 {% endblock %}
+
+{% block active_about_us %}
+    active
+{% endblock %}
+
+{% block lang_ru %}
+	{% url 'about_us_ru' %}
+{% endblock %}
+
+
 {% block body %}
-    <div class="mb-4 container">
-        <div id="carouselExampleIndicators" class="carousel slide mb-3">
+    {% if background %}
+        {% for b in background %}
+            <section class="section-lg text-center  bg-image"
+                     style="background-image: url({{ b.image.url }}); ">
+        {% endfor %}
+    {% else %}
+        <section class="section-lg text-center bg-image"
+                 style="background-image: url({% static 'images/for_background.jpg' %}); ">
+    {% endif %}
+
+<div class="container container-fluid">
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-12 col-xxl-11">
+            <h2 class="text-white">Biz barada</h2>
+            <ul class="breadcrumbs-custom">
+                <li>
+                    <a href="{% url 'home' %}">Esas</a>
+                </li>
+                <li class="active">Biz barada</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</section>
+    <div class="mb-5 mt-5 container">
+        <div id="carouselExampleIndicators" class="carousel slide mb-4">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1"></button>
@@ -14,10 +49,12 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{% static 'images/turkmenhali_2.jpg' %}" loading="lazy" class="d-block" width="1300" height="500" alt="...">
+                    <img src="{% static 'images/turkmenhali_2.jpg' %}" loading="lazy" class="d-block" width="1300"
+                         height="500" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% static 'images/turkmenhali_3.jpg' %}" loading="lazy" class="d-block w-100" style="width: 1300px; height: 750px;" alt="...">
+                    <img src="{% static 'images/turkmenhali_3.jpg' %}" loading="lazy" class="d-block w-100"
+                         style="width: 1300px; height: 750px;" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -31,29 +68,32 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <h2 class="mb-2" style="font-family: 'Poppins', sans-serif;">О Государственном объединении</h2>
+        <h2 class="mb-2" style="font-family: 'Poppins', sans-serif;">Döwlet birleşigi barada</h2>
         <hr>
         <p style="font-size: 20px; color: #1b1b1b" class="text-left text-break">
-            Государственное объединение «Туркменхалы» является основным поставщиком на мировой рынок знаменитых
-            туркменских чистошерстяных ворсовых ковров ручной выработки из Туркменистана.
-            Основными видами деятельности объединия являются производство и реализация туркменских ковров и ковровых
-            изделий, сохранение традиций ручного ковроделия, восстановление старинных ковровых орнаментов и изделий.
-            ГО «Туркменхалы» в своем составе объединяет 8 предприятий художественного ковроделия, которые имеют
-            несколько ковровых участков и цехов, расположенных во всех велаятах Туркменистана. На предприятиях
-            художественного ковроделия работают около 5 тыс. ковровщиц.
-            На ковровых фабриках объединия, наряду с орнаментальными, сюжетными коврами, ковровыми портретами и
-            сувенирными изделиями, в основном, вырабатываются классические образцы туркменских ковров. Это вызвано не
-            только большим спросом ковров на внутреннем и внешнем рынках, а прежде всего тем, что это великое наследие
-            художественной культуры туркменского народа.
-            Отличительной особенностью туркменских ковров являются изумительная красота и долговечность, которые
-            заложены в традициях ковроткачества. За многовековую историю своего существования ковровое искусство
-            достигло высокого совершенства и художественной выразительности узоров. В узорах туркменских ковров заложена
-            история происхождения туркменского народа, его философия и мировоззрение.
-            По технике исполнения и эстетическому содержанию туркменский ковер относится к разряду антиквариата. Одним
-            из главных достоинств этого ковра является его высокая плотность, которая составляет от 200 до 400 тыс.
-            узлов в одном квадратном метре и более. Благодаря высокой плотности орнамент ковра четкий и выразительный.
-            Цветовая гамма ковра сдержанна и благородна.
-            Туркменский ковер имеет ещё одно удивительное достоинство. Не старея с годами, он приобретает новые
-            свойства: краски становятся более благородными, а поверхность бархатистой.</p>
+            “Türkmenhaly” döwlet birleşigi Türkmenistandan arassa ýüň ýüplerden dokalýan meşhur türkmen el halylaryny
+            dünýä bazaryna iberýän esasy tarap bolup durýar.
+            Birleşigiň esasy wezipesi türkmen el haly we haly önümlerini öndürmekden, halyny dokamagyň usullaryny
+            ulanmakdan, gadymy haly nagyşlaryny we şu ugra degişli irki önümleri gaýtadan dikeltmekden ybaratdyr.
+            “Türkmenhaly” döwlet birleşiginiň düzümine çeper halyçylyk kärhanalarynyň 8-si degişli bolup, bular
+            Türkmenistanyň ähli welaýatlarynda ýerleşýän ençeme halyçylyk bölümlerini we sehleri özünde jemleýär. Bu
+            çeper halyçylyk kärhanalarynda 5 müňe golaý halyçy zenanlar işleýär.
+            Birleşigiň çeper halyçylyk kähanalarynda öndürilýän dürli nagyşly, şekilli we ýüz keşpli halylar hem-de
+            sowgatlyk önümler bilen bir hatarda, türkmen halylarynyň nusgawy görnüşleri işlenip taýýarlanýar. Munuň diňe
+            bir içerki we daşarky bazarlarda bildirilýän islegleri kanagatlandyrmak bilen çäklenmän, ilkinji nobatda
+            onuň türkmen halkynyň çeperçilik medeniýetiniň ajaýyp mirasy bolup durýandygyny görkezmek bilen baglydygyny
+            aýdýar.
+            Türkmen halylarynyň haýran galdyrýan gözelligini we uzak wagtlap ulanmaga ýaramlylygyny, olaryň
+            tapawutlandyryjy aýratynlygy hökmünde görkezmek bolar, bu aýratynlyklar halyçylyga mahsus ýörelgelerden
+            gelip çykýar. Köp asyrlyk taryhynda halyçylyk sungaty belent derejedäki kämillige ýetirilip, nagyşlaryň
+            çeperçilik taýdan täsirliligi bilen haýran galdyrýar. Türkmen halylarynyň nagyşlarynda türkmen halkynyň
+            gelip çykyşynyň taryhy, onuň pelsepesi we dünýägaraýyşy beýan edilendir.
+            Türkmen halysy tehniki taýdan taýýarlanylyşy we estetiki many-mazmuny boýunça gadymy, seýrek duşýan zatlaryň
+            hataryna degişlidir. Bu halynyň örän syk dokalmagy onuň esasy aýratynlyklarynyň biri hasaplanýar, çünki
+            halynyň bir inedördül metrinde 200-400 müň we şondan-da köp çitim bardyr. Diýseň syk dokalýandygy üçin
+            halynyň nagşy örän dürs we täsirli bolup görünýär. Halydaky reňkler ýerlikli we göze ýakymlydyr.
+            Türkmen halysynyň başga-da haýran galdyryjy we gymmatly taraplary bar. Ýyl geçdigiçe, türkmen halysy täze
+            öwüşginlere eýe bolýar: reňkler has ýakymly we ýüz tarapy mahmal ýaly ýumşak bolýar.
+        </p>
     </div>
 {% endblock %}

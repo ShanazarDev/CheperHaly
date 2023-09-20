@@ -2,17 +2,16 @@
 {% load static %}
 
 {% block titile %}
-    Habarlar
+    Biziň bloglarymyz
 {% endblock %}
 
-{% block active_news %}
+{% block active_blog %}
     active
 {% endblock %}
 
 {% block lang_ru %}
-	{% url 'news_ru' %}
+	{% url 'blog_ru' %}
 {% endblock %}
-
 
 {% block body %}
     {% if background %}
@@ -23,32 +22,35 @@
         {% else %}
             <section class="section-lg text-center bg-image"
                      style="background-image: url({% static 'images/for_background.jpg' %}); ">
-        {% endif %}
+    {% endif %}
 
         <div class="container container-fluid">
             <div class="row justify-content-sm-center">
                 <div class="col-sm-12 col-xxl-11">
-                    <h2 class="text-white">Habarlar</h2>
+                    <h2 class="text-white">Blog</h2>
                     <ul class="breadcrumbs-custom">
                         <li>
-                            <a href="{% url 'home' %}">Esasy</a>
+                            <a href="{% url 'home' %}">Esas</a>
                         </li>
-                        <li class="active">Ähli habarlar</li>
+                        <li>
+                            <a href="{% url 'home' %}#blog">Blog</a>
+                        </li>
+                        <li class="active">Ähli bloglar</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
     <div class="container py-4 py-xl-5">
-        <h2>Esasy habarlar</h2>
+        <h2>Esasy bloglar</h2>
         <div class="carousel slide pt-4" data-bs-ride="carousel" id="carousel-1" style="height: 600px;">
             <div class="carousel-inner h-100">
-                {% for top in top_news %}
-                    <div class="carousel-item active h-100">
-                        <img class="w-100 d-block position-absolute h-100 fit-cover"
-                                                                 src="{{ top.image.url }}"
-                                                                 alt="Slide Image"
-                                                                 style="z-index: -1;backdrop-filter: blur(0px);filter: blur(20px);">
+                {% for top in top_blog %}
+                    <div class="carousel-item active h-100"><img
+                            class="w-100 d-block position-absolute h-100 fit-cover"
+                            src="{{ top.image.url }}"
+                            alt="Slide Image"
+                            style="z-index: -1;backdrop-filter: blur(0px);filter: blur(20px);">
                         <div class="container d-flex flex-column justify-content-center h-100">
                             <div class="row">
                                 <div class="col-md-6 col-xl-4 offset-md-2">
@@ -60,15 +62,16 @@
                                             {{ top.short_description }}
                                             <br>
                                             {% if top.views_count %}
-                                                &#128064;: {{ top.news_post.count }}
-                                                <br>
+                                                &#128064;: {{ top.blog_ip.count }}<br>
                                             {% endif %}
-                                            {{ top.date }}
+                                            <span>{{ top.date }}</span>
                                         </p>
-                                        <a class="button button-effect-ujarak button-lg button-primary-2 button-square"
-                                           role="button" href="{% url 'news_one' title=top.slug_title %}">
+                                        <a
+                                                class="button button-effect-ujarak button-lg button-primary-2 button-square"
+                                                role="button"
+                                                href="{% url 'blog_post' title=top.slug_title %}">
                                         <span class="text-dark">
-                                            Okamak
+                                            Читать
                                         </span>
                                         </a>
                                     </div>
@@ -90,44 +93,40 @@
     </div>
 
     <div class="container py-4 py-xl-5 mt-0">
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
-                <h2>Habarlar</h2>
-                <p class="w-lg-50 mt-2" style="font-size: 22px;">Türkmenistandaky ähli habarlar</p>
+                <h2>Biziň ähli bloglarymyz</h2>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            {% for all in all_news %}
-                <div class="col-md-3 mt-0">
-                    <div class="w-100">
-                        <div class="img-fluid border rounded-3 blurIn"
-                             style="height: 250px; margin-top: 20px;
-                                     background: url({{ all.image.url }}) center / cover;
-                                     padding-left: 12px;padding-right: 12px;">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8 text-break">
-                    <br>
-                    <h4>{{ all.title }}</h4>
-                    <br>
-                    <p>
-                        {{ all.short_description }}
-                        {% if all.views_count %}
-                            <br>
-                            &#128064;: {{ all.news_post.count }}
-                        {% endif %}
+            {% for a in all_blogs %}
+                <div class="col-md-4 cust_blogteaser" style="padding-bottom: 20px;margin-bottom: 32px;">
+                    <a href="{% url 'blog_post' title=a.slug_title %}">
+                        <img class="img-fluid rounded" style="height:300px; width: 300px; object-fit:  cover;"
+                             src="{{ a.image.url }}" alt="img" loading="lazy">
+                    </a>
+                    <h5>
+                        {{ a.title }}
+                        <br>
+                    </h5>
+                    <p class="text-secondary">
+                        {{ a.short_description }}
                     </p>
+                    {% if a.views_count %}
+                        <span>
+                                        &#128064;: {{ a.blog_ip.count }}
+                        </span>
+                    {% endif %}
                     <p>
-                        {{ all.date }}
+                        {{ a.date }}
                     </p>
-                    <a class="mt-2 button button-effect-ujarak button-sm button-primary-2 button-square"
-                       role="button" href="{% url 'news_one' title=all.slug_title %}">
-                                <span class="text-dark">
-                                    Okamak
-                                </span>
+                    <a class="mt-2 button button-effect-ujarak button-xs button-primary-2 button-square"
+                       role="button" href="{% url 'blog_post' title=a.slug_title %}">
+                                    <span class="text-dark">
+                                        Okamak
+                                    </span>
                     </a>
                 </div>
             {% endfor %}

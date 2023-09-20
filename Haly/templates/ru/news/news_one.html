@@ -1,10 +1,10 @@
 {% extends 'ru/base.html' %}
 {% load static %}
 {% block style %}
-    <link rel="stylesheet" href="{% static 'assets/css/News-Cards.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/cards-d_style.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Hero-Features-icons.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Lightbox-Gallery-baguetteBox.min.css' %}">
+{#    <link rel="stylesheet" href="{% static 'assets/css/News-Cards.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'assets/css/cards-d_style.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'assets/css/Hero-Features-icons.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'assets/css/Lightbox-Gallery-baguetteBox.min.css' %}">#}
 {% endblock %}
 
 {% block title %}
@@ -15,6 +15,12 @@
 
 {% block active_news %}
     active
+{% endblock %}
+
+{% block lang_tm %}
+    {% for n in news %}
+        {% url 'news_one' title=n.slug_title %}
+    {% endfor %}
 {% endblock %}
 
 {% block body %}
@@ -92,7 +98,7 @@
             </div>
         </div>
     </div>
-    <script src="{% static 'js/Lightbox-Gallery.js' %}"></script>
-    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/Lightbox-Gallery-baguetteBox.min.js' %}"></script>
+{#    <script src="{% static 'js/Lightbox-Gallery.js' %}"></script>#}
+{#    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>#}
+{#    <script src="{% static 'js/Lightbox-Gallery-baguetteBox.min.js' %}"></script>#}
 {% endblock %}
