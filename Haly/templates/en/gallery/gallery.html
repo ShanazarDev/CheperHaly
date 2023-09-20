@@ -1,0 +1,20 @@
+{% extends 'en/base.html' %}
+{% load static %}
+
+{% block title %}
+    Oops
+{% endblock %}
+
+{% block active_carpet %}
+    active
+{% endblock %}
+
+{% block body %}
+    <h3>No carpets are yet!</h3>
+    <a class="button button-effect-ujarak button-lg button-primary-2 button-square"
+       role="button" href="{% url 'home_en' %}">
+           <span class="text-dark">
+           Home
+           </span>
+    </a>
+{% endblock %}

@@ -31,9 +31,20 @@ urlpatterns_ru = [
     path('blog/post/<title>', views_ru.blog_post, name='blog_ru_post')
 ]
 
+urlpatterns_en = [
+    path('', views_en.home, name='home_en'),
+    path('news/', views_en.news, name='news_en'),
+    path(r'news/<title>', views_en.news_one, name='news_en_one'),
+    path('about-us/', views_en.about_us, name='about_us_en'),
+    path('gallery/', views_en.gallery, name='gallery_en'),
+    path('blogs/', views_en.blogs, name='blog_en'),
+    path('blog/post/<title>', views_en.blog_post, name='blog_en_post')
+]
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ru/', include(urlpatterns_ru)),
+    path('en/', include(urlpatterns_en)),
     path('', views_tm.home, name='home'),
     path('news/', views_tm.news, name='news'),
     path(r'news/<title>', views_tm.news_one, name='news_one'),
