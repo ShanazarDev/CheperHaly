@@ -1,11 +1,41 @@
 {% extends 'ru/base.html' %}
 {% load static %}
+
 {% block titile %}
     Туркмен Халы - О нас
 {% endblock %}
+
+{% block active_about_us %}
+    active
+{% endblock %}
+
 {% block body %}
-    <div class="mb-4 container">
-        <div id="carouselExampleIndicators" class="carousel slide mb-3">
+    {% if background %}
+        {% for b in background %}
+            <section class="section-lg text-center  bg-image"
+                     style="background-image: url({{ b.image.url }}); ">
+        {% endfor %}
+    {% else %}
+        <section class="section-lg text-center bg-image"
+                 style="background-image: url({% static 'images/for_background.jpg' %}); ">
+    {% endif %}
+
+<div class="container container-fluid">
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-12 col-xxl-11">
+            <h2 class="text-white">О Нас</h2>
+            <ul class="breadcrumbs-custom">
+                <li>
+                    <a href="{% url 'home_ru' %}">Главная</a>
+                </li>
+                <li class="active">О нас</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</section>
+    <div class="mb-5 mt-5 container">
+        <div id="carouselExampleIndicators" class="carousel slide mb-4">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1"></button>
@@ -14,10 +44,12 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{% static 'images/turkmenhali_2.jpg' %}" loading="lazy" class="d-block" width="1300" height="500" alt="...">
+                    <img src="{% static 'images/turkmenhali_2.jpg' %}" loading="lazy" class="d-block" width="1300"
+                         height="500" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% static 'images/turkmenhali_3.jpg' %}" loading="lazy" class="d-block w-100" style="width: 1300px; height: 750px;" alt="...">
+                    <img src="{% static 'images/turkmenhali_3.jpg' %}" loading="lazy" class="d-block w-100"
+                         style="width: 1300px; height: 750px;" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"

@@ -5,8 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>{% block titile %} Туркмен Халы {% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic%7CPoppins:300,400,500,700">
+    <title>{% block title %} Туркмен Халы {% endblock %}</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic%7CPoppins:300,400,500,700">
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/Projects-Grid-images.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -46,31 +47,29 @@
                                     <div class="dropdown">
                                         <button class="btn dropdown-toggle" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                            RU &#127479;&#127482;
+                                            RU
                                         </button>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                {% block lang_ru %}
-                                                    <a class="dropdown-item select2-container-active"
-                                                       href="{% url 'home_ru' %}">
-                                                        RU &#127479;&#127482;
-                                                    </a>
-                                                {% endblock %}
+                                                <a class="dropdown-item select2-container-active"
+                                                   href="{% block lang_ru %}
+                                                       	{% url 'home_ru' %}
+                                                       {% endblock %}">
+                                                    RU
+                                                </a>
                                             </li>
                                             <li>
-                                                {% block lang_tm %}
-                                                    <a class="dropdown-item" href="#">
-                                                        TM &#127481;&#127474;
-                                                    </a>
-                                                {% endblock %}
+                                                <a class="dropdown-item" href="{% block lang_tm %}
+                                                    	{% endblock %}">
+                                                    TM
+                                                </a>
 
                                             </li>
                                             <li>
-                                                {% block lang_en %}
-                                                    <a class="dropdown-item" href="#">
-                                                        EN &#127482;&#127480;
-                                                    </a>
-                                                {% endblock %}
+                                                <a class="dropdown-item" href="{% block lang_en %}
+                                                    {% endblock %}">
+                                                    EN
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -83,7 +82,6 @@
                                         </a>
                                     </div>
                                     <br>
-                                    {#                                    <h2>Туркмен Халы</h2>#}
                                 </div>
                                 <div class="col d-xxl-flex justify-content-xxl-end align-items-xxl-center">
                                     <div class="contact-info">
@@ -110,40 +108,54 @@
                         <button
                                 class="rd-navbar-collapse-toggle"
                                 data-rd-navbar-toggle=".rd-navbar-collapse"><span></span></button>
-                        <div class="rd-navbar-brand mobile-brand"><a class="brand-name"
-                                                                     style="font-family: 'Poppins', sans-serif;"
-                                                                     href="{% url 'home_ru' %}">
-                            <img
-                                    src="{% static 'images/turkmenhaly_logo.png' %}" alt="turkmenhalylogo" width="50"
-                                    height="50">
-                            {% block logo %}
-                                Туркмен Халы
-                            {% endblock %}</a>
+                        <div class="rd-navbar-brand mobile-brand">
+                            <a class="brand-name"
+                               style="font-family: 'Poppins', sans-serif;"
+                               href="{% url 'home_ru' %}">
+                                <img
+                                        src="{% static 'images/turkmenhaly_logo.png' %}" alt="turkmenhalylogo"
+                                        width="50"
+                                        height="50">
+                                {% block logo %}
+                                    Туркмен Халы
+                                {% endblock %}
+                            </a>
                         </div>
                     </div>
                     <div class="rd-navbar-aside-right">
                         <div class="rd-navbar-nav-wrap">
                             <div class="rd-navbar-nav-scroll-holder">
                                 <ul class="rd-navbar-nav" style="margin-left: 0;">
-                                    <li class="rd-nav-item active">
+                                    <li class="rd-nav-item
+                                    {% block active_main %}
+
+                                    {% endblock %}">
                                         <a class="rd-nav-link"
                                            href="{% url 'home_ru' %}">Главная
                                         </a>
                                     </li>
-                                    <li class="rd-nav-item">
+                                    <li class="rd-nav-item {% block active_about_us %}
+
+                                    {% endblock %}">
                                         <a class="rd-nav-link" href="{% url 'about_us_ru' %}">О
                                             нас
                                         </a>
                                     </li>
-                                    <li class="rd-nav-item">
-                                        <a class="rd-nav-link" href="{% url 'home_ru' %}#about-us">Видео
+                                    <li class="rd-nav-item {% block active_news %}
+
+                                    {% endblock %}">
+                                        <a class="rd-nav-link" href="{% url 'news_ru' %}">Новости
                                         </a>
                                     </li>
-                                    <li class="rd-nav-item">
+                                    <li class="rd-nav-item {% block active_carpet %}
+
+                                    {% endblock %}">
                                         <a class="rd-nav-link" href="{% url 'gallery_ru' %}">Ковры</a>
                                     </li>
-                                    <li class="rd-nav-item">
-                                        <a class="rd-nav-link" href="{% url 'home_ru' %}#contacts">Контакты
+                                    <li class="rd-nav-item {% block active_blog %}
+
+                                    {% endblock %}">
+                                        <a class="rd-nav-link" href="{% url 'blog_ru' %}">Блог
                                         </a>
                                     </li>
                                 </ul>
@@ -234,7 +246,7 @@
                                 <h5>Ссылки</h5>
                                 <hr class="divider divider-sm divider-left">
                                 <ul class="nav-list list-column-3">
-                                    <li class="active">
+                                    <li>
                                         <a class="link" href="{% url 'home_ru' %}#home">Главная</a>
                                     </li>
                                     <li>

@@ -1,100 +1,95 @@
 {% load static %}
 
 <section class="text-center section section-md bg-default text-md-left">
-    <div class="container-wide">
+    <div class="container-wide isotope-wrap">
         <div class="row justify-content-sm-center row-75 overflow-hidden">
             <div class="col-xl-6 offset-xl-0 wow fadeInUp" data-wow-delay=".2s">
                 <div class="tabs-custom tabs-horizontal tabs-complex" id="tabs-2">
-                    <div class="tabs-complex-title">
-                        <h3>Цены</h3>
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item"><a class="nav-link active" data-toggle="tab"
-                                                    href="#tabs-2-1" style="font-size: 14px;">Большие ковры</a>
+                    <div class="tabs-complex-title isotope-filters" id="isotope-1">
+                        <h3>
+                            <a href="{% url 'gallery_ru' %}">
+                                <span>
+                                    Цены
+                                </span>
+                            </a>
+                        </h3>
+                        <ul class="nav nav-tabs mb-2">
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab"
+                                   href="#" data-isotope-filter="tabs-2-1"
+                                   data-isotope-group="gallery" style="font-size: 14px;">
+                                    Большие ковры
+                                </a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tabs-2-2"
-                                                    style="font-size: 14px;">Изделие из&nbsp; ковров</a>
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   data-toggle="tab"
+                                   data-isotope-filter="tabs-2-2"
+                                   data-isotope-group="gallery"
+                                   href="#" style="font-size: 14px;">
+                                    Изделие из&nbsp;
+                                    ковров
+                                </a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tabs-2-3"
-                                                    style="font-size: 14px;">Аксессуары</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab"
+                                   data-isotope-filter="tabs-2-3"
+                                   data-isotope-group="gallery"
+                                   href="#" style="font-size: 14px;">
+                                    Аксессуары
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <hr>
-                    <div class="tab-content">
-                        <div class="bounce animated tab-pane fadeInDown active" id="tabs-2-1">
-                            <div class="services-single-box">
-                                <div class="services-single-header">
-                                    <div class="services-single-title"><span>  Teke </span></div>
-                                    <div class="services-single-price"><span>1500 тмт</span></div>
-                                </div>
-                                <p class="services-single-body"> description from db</p>
-                            </div>
-                            <div class="services-single-box">
-                                <div class="services-single-header">
-                                    <div class="services-single-title"><span> Ersari </span></div>
-                                    <div class="services-single-price"><span>1750 тмт</span></div>
-                                </div>
-                                <p class="services-single-body">description from db</p>
-                            </div>
-                            <div class="services-single-box">
-                                <div class="services-single-header">
-                                    <div class="services-single-title"><span> Yomut </span>
+                    <div class="tab-content isotope" data-isotope-layout="fitRows" data-isotope-group="gallery"
+                         data-lightgallery="group">
+                        {% for g in gallery_big_carpet %}
+                            <div class="bounce animated tab-pane fadeInDown active isotope-item container-wide"
+                                 data-filter="{{ g.category }}">
+                                <div class="services-single-box">
+                                    <div class="services-single-header">
+                                        <div class="services-single-title">
+                                            <span> {{ g.name }} </span></div>
+                                        <div class="services-single-price"><span>{{ g.price }} тмт</span></div>
                                     </div>
-                                    <div class="services-single-price"><span>2000 тмт</span></div>
+                                    <p class="services-single-body text-break"> {{ g.description }}</p>
                                 </div>
-                                <p class="services-single-body"> description from db</p>
                             </div>
-                        </div>
-                        <div class="bounce animated tab-pane fadeInDown" id="tabs-2-2">
-                            <div class="services-single-box">
-                                <div class="services-single-header">
-                                    <div class="services-single-title"><span>Test</span></div>
-                                    <div class="services-single-price"><span>$35</span></div>
+                        {% empty %}
+                            <div>
+                                Пока цен на ковров нету!
+                            </div>
+                        {% endfor %}
+                        {% for g in gallery_products %}
+                            <div class="bounce animated tab-pane fadeInDown active isotope-item container-wide"
+                                 data-filter="{{ g.category }}">
+                                <div class="services-single-box">
+                                    <div class="services-single-header">
+                                        <div class="services-single-title">
+                                            <span> {{ g.name }} </span></div>
+                                        <div class="services-single-price"><span>{{ g.price }} тмт</span></div>
+                                    </div>
+                                    <p class="services-single-body text-break"> {{ g.description }}</p>
                                 </div>
-                                <p class="services-single-body"> description from db </p>
                             </div>
-                            <div class="services-single-box">
-                                <div class="services-single-header">
-                                    <div class="services-single-title"><span> Test </span></div>
-                                    <div class="services-single-price"><span>$28</span></div>
+                        {% endfor %}
+                        {% for g in gallery_accessories %}
+                            <div class="bounce animated tab-pane fadeInDown active isotope-item container-wide"
+                                 data-filter="{{ g.category }}">
+                                <div class="services-single-box">
+                                    <div class="services-single-header">
+                                        <div class="services-single-title">
+                                            <span> {{ g.name }} </span></div>
+                                        <div class="services-single-price"><span>{{ g.price }} тмт</span></div>
+                                    </div>
+                                    <p class="services-single-body text-break"> {{ g.description }}</p>
                                 </div>
-                                <p class="services-single-body"> description from db</p>
                             </div>
-                            <div class="services-single-box">
-                                <div class="services-single-header">
-                                    <div class="services-single-title"><span>Test</span></div>
-                                    <div class="services-single-price"><span>$21</span></div>
-                                </div>
-                                <p class="services-single-body"> description from db
-                                </p>
-                            </div>
-                        </div>
-                        <div class="bounce animated tab-pane fadeInDown" id="tabs-2-3">
-                            <div class="services-single-box">
-                                <div class="services-single-header">
-                                    <div class="services-single-title"><span>Test</span></div>
-                                    <div class="services-single-price"><span>$48</span></div>
-                                </div>
-                                <p class="services-single-body"> description from db</p>
-                            </div>
-                            <div class="services-single-box">
-                                <div class="services-single-header">
-                                    <div class="services-single-title"><span>Test</span></div>
-                                    <div class="services-single-price"><span>$26</span></div>
-                                </div>
-                                <p class="services-single-body"> description from db </p>
-                            </div>
-                            <div class="services-single-box">
-                                <div class="services-single-header">
-                                    <div class="services-single-title"><span>Test</span></div>
-                                    <div class="services-single-price"><span>$42</span></div>
-                                </div>
-                                <p class="services-single-body">description from db</p>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
-            {#rates#}
             {% include 'ru/history.html' %}
         </div>
     </div>

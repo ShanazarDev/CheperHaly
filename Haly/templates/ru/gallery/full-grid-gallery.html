@@ -1,30 +1,43 @@
 {% extends 'ru/base.html' %}
 {% load static %}
-{% block titile %}
-    Наша Галерея
-{% endblock %}
-{% block body %}
 
+{% block titile %}
+    Наша Ковры
+{% endblock %}
+
+{% block active_carpet %}
+    active
+{% endblock %}
+
+{% block body %}
     <main>
         <!-- Breadcrumbs & Page title-->
-        <section class="section-lg text-center bg-image"
-                 style="background-image: url({% static 'images/for_background.jpg' %}); ">
-            <div class="container container-fluid">
-                <div class="row justify-content-sm-center">
-                    <div class="col-sm-12 col-xxl-11">
-                        <h2 class="text-white">Галерея</h2>
-                        <ul class="breadcrumbs-custom">
-                            <li>
-                                <a href="{% url 'home_ru' %}">Главная</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'home_ru' %}#gallery">Галерея</a>
-                            </li>
-                            <li class="active">Вся галерея</li>
-                        </ul>
-                    </div>
+        {% if background %}
+            {% for b in background %}
+                <section class="section-lg text-center bg-image"
+                         style="background-image: url({{ b.image.url }}); ">
+            {% endfor %}
+        {% else %}
+            <section class="section-lg text-center bg-image"
+                     style="background-image: url({% static 'images/for_background.jpg' %}); ">
+        {% endif %}
+
+        <div class="container container-fluid">
+            <div class="row justify-content-sm-center">
+                <div class="col-sm-12 col-xxl-11">
+                    <h2 class="text-white">Ковры</h2>
+                    <ul class="breadcrumbs-custom">
+                        <li>
+                            <a href="{% url 'home_ru' %}">Главная</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'home_ru' %}#gallery">Ковры</a>
+                        </li>
+                        <li class="active">Все ковры</li>
+                    </ul>
                 </div>
             </div>
+        </div>
         </section>
 
         <section class="section-lg-top bg-gray-light text-center">
@@ -72,91 +85,22 @@
                                     href="{{ g.image.url }}"
                                     data-lightgallery="item">
                                 <figure>
-                                    <img src="{{ g.image.url }}" alt="{{ g.name }}" class="p-2"
-                                         style="width: 640px; height: 426px; object-fit: cover"/>
+                                    <img src="{{ g.image.url }}" alt="{{ g.name_ru }}" class="p-2"
+                                         style="width: 640px; height: 426px; object-fit: cover" loading="lazy"/>
                                 </figure>
                                 <div class="caption">
-                                    <p class="caption-title">{{ g.name }}</p>
-                                    <p class="caption-text">{{ g.description }}</p>
-                                    <p class="caption-text">{{ g.size_of_carpet }}</p>
+                                    <p class="caption-title">{{ g.name_ru }}</p>
+                                    <p class="caption-text">{{ g.description_ru }}</p>
+                                    {% if g.size_of_carpet %}
+                                        <p class="caption-text">{{ g.size_of_carpet }}</p>
+                                    {% endif %}
+                                    {% if g.price %}
+                                        <p class="caption-text">{{ g.price }} TMT</p>
+                                    {% endif %}
                                 </div>
                             </a>
                         </div>
                     {% endfor %}
-
-                    {% comment %}
-	{#                    <div class="col-12 col-md-6 col-lg-4 isotope-item" data-filter="Category 2">#}
-                    {#                        <a#}
-                    {#                                class="thumbnail-classic" href="images/grid-gallery-2-1200x800_original.jpg"#}
-                    {#                                data-lightgallery="item">#}
-                    {#                            <figure>#}
-                    {#                                <img src="images/grid-gallery-2-640x426.jpg" alt="" width="640" height="426"/>#}
-                    {#                            </figure>#}
-                    {#                            <div class="caption">#}
-                    {#                                <p class="caption-title">Photo #2</p>#}
-                    {#                                <p class="caption-text">Enjoy the best masterpieces of modern fine arts at our#}
-                    {#                                    gallery.</p>#}
-                    {#                            </div>#}
-                    {#                        </a>#}
-                    {#                    </div>#}
-                    {#                    <div class="col-12 col-md-6 col-lg-4 isotope-item" data-filter="Category 3">#}
-                    {#                        <a#}
-                    {#                                class="thumbnail-classic" href="images/grid-gallery-3-628x800_original.jpg"#}
-                    {#                                data-lightgallery="item">#}
-                    {#                            <figure>#}
-                    {#                                <img src="images/grid-gallery-3-640x426.jpg" alt="" width="640" height="426"/>#}
-                    {#                            </figure>#}
-                    {#                            <div class="caption">#}
-                    {#                                <p class="caption-title">Photo #3</p>#}
-                    {#                                <p class="caption-text">Enjoy the best masterpieces of modern fine arts at our#}
-                    {#                                    gallery.</p>#}
-                    {#                            </div>#}
-                    {#                        </a>#}
-                    {#                    </div>#}
-                    {#                    <div class="col-12 col-md-6 col-lg-4 isotope-item" data-filter="Category 1">#}
-                    {#                        <a#}
-                    {#                                class="thumbnail-classic" href="images/grid-gallery-4-666x800_original.jpg"#}
-                    {#                                data-lightgallery="item">#}
-                    {#                            <figure>#}
-                    {#                                <img src="images/grid-gallery-4-640x426.jpg" alt="" width="640" height="426"/>#}
-                    {#                            </figure>#}
-                    {#                            <div class="caption">#}
-                    {#                                <p class="caption-title">Photo #4</p>#}
-                    {#                                <p class="caption-text">Enjoy the best masterpieces of modern fine arts at our#}
-                    {#                                    gallery.</p>#}
-                    {#                            </div>#}
-                    {#                        </a>#}
-                    {#                    </div>#}
-                    {#                    <div class="col-12 col-md-6 col-lg-4 isotope-item" data-filter="Category 3">#}
-                    {#                        <a#}
-                    {#                                class="thumbnail-classic" href="images/grid-gallery-5-1200x831_original.jpg"#}
-                    {#                                data-lightgallery="item">#}
-                    {#                            <figure>#}
-                    {#                                <img src="images/grid-gallery-5-640x426.jpg" alt="" width="640" height="426"/>#}
-                    {#                            </figure>#}
-                    {#                            <div class="caption">#}
-                    {#                                <p class="caption-title">Photo #7</p>#}
-                    {#                                <p class="caption-text">Enjoy the best masterpieces of modern fine arts at our#}
-                    {#                                    gallery.</p>#}
-                    {#                            </div>#}
-                    {#                        </a>#}
-                    {#                    </div>#}
-                    {#                    <div class="col-12 col-md-6 col-lg-4 isotope-item" data-filter="Category 2">#}
-                    {#                        <a#}
-                    {#                                class="thumbnail-classic" href="images/grid-gallery-6-1200x783_original.jpg"#}
-                    {#                                data-lightgallery="item">#}
-                    {#                            <figure>#}
-                    {#                                <img src="images/grid-gallery-6-640x426.jpg" alt="" width="640" height="426"/>#}
-                    {#                            </figure>#}
-                    {#                            <div class="caption">#}
-                    {#                                <p class="caption-title">Photo #8</p>#}
-                    {#                                <p class="caption-text">Enjoy the best masterpieces of modern fine arts at our#}
-                    {#                                    gallery.</p>#}
-                    {#                            </div>#}
-                    {#                        </a>#}
-                    {#                    </div>#}
-{% endcomment %}
-
                 </div>
             </div>
         </section>

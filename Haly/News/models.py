@@ -26,9 +26,17 @@ class NewsModel(models.Model):
     slug_title_ru = models.SlugField(allow_unicode=True, verbose_name='Ничего не писать!!!')
     slug_title_en = models.SlugField(allow_unicode=True, verbose_name='Dont touch!!!')
 
+    views_count = models.BooleanField(default=False, verbose_name='Количество просмотров')
+
     def image_to_admin(self):
         from django.utils.safestring import mark_safe
         return mark_safe('<img src="{}" width="100" />'.format(self.image.url))
 
     image_to_admin.short_description = 'Image'
     image_to_admin.allow_tags = True
+
+
+class NewsViewModel(models.Model):
+    news_post = models.ForeignKey(NewsModel, verbose_name='Новостной пост', on_delete=models.CASCADE,
+                                  related_name='news_post')
+    ip = models.GenericIPAddressField(verbose_name='Ip address')

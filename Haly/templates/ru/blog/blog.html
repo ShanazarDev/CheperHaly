@@ -1,200 +1,96 @@
 {% extends 'ru/base.html' %}
 {% load static %}
-{% block titile %}
-	Blog title
+
+{% block title %}
+    {% for b in blog %}
+        {{ b.title_ru|truncatewords:3 }}
+    {% endfor %}
 {% endblock %}
+
+{% block active_blog %}
+    active
+{% endblock %}
+
 {% block body %}
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-xxl-12">
-                <div class="carousel slide pt-4" data-bs-ride="carousel" id="carousel-1" style="height: 600px;">
-                    <div class="carousel-inner h-100">
-                        <div class="carousel-item active h-100"><img
-                                class="w-100 d-block position-absolute h-100 fit-cover"
-                                src="{% static 'images/grid-gallery-3-640x426.jpg' %}"
-                                alt="Slide Image"
-                                style="z-index: -1;backdrop-filter: blur(0px);filter: blur(20px);">
-                            <div class="container d-flex flex-column justify-content-center h-100">
-                                <div class="row">
-                                    <div class="col-md-6 col-xl-4 offset-md-2">
-                                        <div style="max-width: 350px;filter: blur(0px);backdrop-filter: blur(0px);">
-                                            <h2 class="text-uppercase fw-bold text-white">Biben dum<br>fringi dictum,
-                                                augue
-                                                purus</h2>
-                                            <p class="my-3 text-white-50">Tincidunt laoreet leo, adipiscing taciti
-                                                tempor.
-                                                Primis senectus
-                                                sapien, risus donec ad fusce augue interdum.</p><a
-                                                class="button button-effect-ujarak button-lg button-primary-2 button-square"
-                                                role="button" href="#"><span class="text-dark">Читать</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <section>
+                    {% for b in blog %}
+                        <div class="img-fluid border rounded-3 blurIn"
+                             style="height: 450px; margin-top: 20px;
+                                     background: url({{ b.image.url }}) center / cover;
+                                     padding-left: 12px;padding-right: 12px;">
                         </div>
-                        <div class="carousel-item h-100"><img class="w-100 d-block position-absolute h-100 fit-cover"
-                                                              src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"
-                                                              alt="Slide Image" style="z-index: -1;">
-                            <div class="container d-flex flex-column justify-content-center h-100">
-                                <div class="row">
-                                    <div class="col-md-6 col-xl-4 offset-md-2">
-                                        <div style="max-width: 350px;">
-                                            <h1 class="text-uppercase fw-bold">Biben dum<br>fringi dictum, augue purus
-                                            </h1>
-                                            <p class="my-3">Tincidunt laoreet leo, adipiscing taciti tempor. Primis
-                                                senectus
-                                                sapien, risus donec ad fusce augue interdum.</p><a
-                                                class="btn btn-primary btn-lg me-2" role="button" href="#">Button</a><a
-                                                class="btn btn-outline-primary btn-lg" role="button" href="#">Button</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span
-                            class="carousel-control-prev-icon"></span><span
-                            class="visually-hidden">Previous</span></a><a
-                            class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span
-                            class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a>
-                    </div>
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></button>
-                        <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="1"></button>
-                    </div>
-                </div>
-
+                    {% endfor %}
+                </section>
             </div>
             <div class="col-md-4 col-xxl-12">
-                <div>
-                    <section class="photo-gallery py-4 py-xl-5">
-                        <div class="container">
+                <section class="photo-gallery py-4 py-xl-5">
+                    <div class="container">
+                        {% for b in blog %}
                             <div class="row mb-5">
-                                <div class="col-md-8 col-xl-6 text-break text-center mx-auto">
-                                    <h2>Название блога: "Ковёр в доме: уют, красота и стиль"</h2>
-                                    <p class="mt-2 h4 w-lg-50">Освещать все аспекты, связанные с коврами: историю,
-                                        производство,
-                                        дизайн, выбор, уход и многое другое.</p>
+                                <div class="col-md-8 col-xl-6 text-break text-center text-dark mx-auto">
+                                    <h2>
+                                        {{ b.title_ru }}
+                                    </h2>
+                                    <p class="w-lg-50">
+                                        {{ b.short_description_ru }}
+                                    </p>
+                                    {% if b.views_count %}
+                                        <span>
+                                            &#128064;: {{ b.blog_ip.count }}
+                                        </span>
+                                    {% endif %}
+                                    <p>
+                                        {{ b.date }}
+                                    </p>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <p class="text-break text-dark"
-                               style="padding-left: 12px;text-align: left; font-size: 20px;">
-                                Темы блога:
-
-                                История ковров: От истоков до наших дней.
-                                Производство ковров: Материалы, технологии, этапы производства.
-                                Дизайн ковров: Классические и современные мотивы.
-                                Выбор ковра: Как подобрать ковер под интерьер, размер, стиль.
-                                Уход за коврами: Как сохранить красоту ковра на долгие годы.
-                                Ковры как инвестиции: Как выбрать ковер, который будет дорожать со временем.
-                                Стиль блога: Информативный, но живой и интересный.
-
-                                Формат блога: Статьи, обзоры, интервью, тесты, фоторепортажи.
-
-                                Периодичность публикаций: 1-2 раза в неделю.
-
-                                Пример статьи:
-
-                                Как выбрать ковер для гостиной
-
-                                Гостиная - это сердце дома, место, где мы встречаемся с друзьями и близкими, отдыхаем и
-                                проводим время. Поэтому к выбору ковра для гостиной нужно подходить ответственно.
-
-                                При выборе ковра для гостиной следует учитывать следующие факторы:
-
-                                Размер: Ковер должен быть достаточно большим, чтобы на нем могли разместиться все гости.
-                                Оптимальный размер ковра - это размер, который занимает не менее 2/3 площади гостиной.
-                                Форма: Ковер может быть прямоугольным, квадратным, круглым или овальным. Выбор формы
-                                зависит от размера и планировки гостиной.
-                                Цвет: Цвет ковра должен гармонировать с общей цветовой гаммой гостиной.
-                                Материал: Ковры бывают изготовлены из натуральных и синтетических материалов.
-                                Натуральные ковры, такие как шерстяные и шелковые, более долговечны и износостойки.
-                                Синтетические ковры, такие как акриловые и полипропиленовые, более доступны по цене и
-                                легче в уходе.
-                                Дизайн: Ковер может быть однотонным или с рисунком. Дизайн ковра должен соответствовать
-                                стилю гостиной.
-                                Вот несколько советов по выбору ковра для гостиной:
-
-                                Если гостиная небольшая, выбирайте ковер светлого оттенка. Темный цвет визуально
-                                уменьшит пространство.
-                                Если гостиная большая, выбирайте ковер с ярким рисунком. Рисунок сделает комнату более
-                                уютной и интересной.
-                                Если гостиная оформлена в современном стиле, выбирайте ковер с геометрическим рисунком.
-                                Геометрические узоры выглядят стильно и актуально.
-                                Если гостиная оформлена в классическом стиле, выбирайте ковер с растительным или
-                                цветочным рисунком. Классические узоры всегда актуальны и никогда не выходят из моды.
-                                Пример обзора:
-
-                                Лучшие турецкие ковры ручной работы
-
-                                Турецкие ковры ручной работы - это произведения искусства, которые ценятся во всем мире.
-                                Они отличаются высоким качеством, изысканным дизайном и долговечностью.
-
-                                В этом обзоре мы рассмотрим лучшие турецкие ковры ручной работы, которые можно
-                                приобрести в России.
-
-                                Пример интервью:
-
-                                Интервью с дизайнером интерьеров о коврах
-
-                                В этом интервью мы поговорили с дизайнером интерьеров Марией Ивановой о коврах. Мария
-                                рассказала нам о том, как правильно выбрать ковер для интерьера, как ухаживать за
-                                коврами и о современных трендах в дизайне ковров.
-
-                                Пример фоторепортажа:
-
-                                Фоторепортаж с выставки ковров
-
-                                В этом фоторепортаже мы представляем вам снимки с выставки ковров, которая проходила в
-                                Москве в сентябре 2023 года. На выставке были представлены ковры из разных стран мира, в
-                                том числе из Турции, Ирана, Индии и Китая.
-
-                                Это лишь некоторые примеры тем и форматов, которые можно использовать в блоге о коврах.
-                                Главное - это создавать интересный и полезный контент, который будет интересен целевой
-                                аудитории.
-                            </p>
-                        </div>
-                    </section>
-                </div>
-                <div>
-                    <div class="container mb-5">
-                        <h3>Читайте также</h3>
-                        <div class="cust_bloglistintro">
-                            <p style="margin-left:34px;color:rgba(255,255,255,0.5);font-size:14px;"></p>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 cust_blogteaser" style="padding-bottom: 20px;margin-bottom: 32px;"><a
-                                    href="#"><img class="img-fluid" style="height:auto;" src="assets/img/image_03.png"></a>
+                            <div class="container container-fluid w-100 text-break">
+                                {{ b.text_ru|safe }}
                             </div>
-                            <div class="col">
-                                <h3 style="text-align:left;margin-top:20px;font-family:'Open Sans', sans-serif;font-size:18px;margin-right:0;margin-left:24px;line-height:34px;letter-spacing:0px;font-style:normal;font-weight:bold;">
-                                    INS: Claims Executive Forum 2018<br></h3>
-                                <p class="text-secondary"
-                                   style="text-align:left;font-size:14px;font-family:'Open Sans', sans-serif;line-height:22px;color:rgb(9,9,10);margin-left:24px;">
-                                    Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam
-                                    in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id. </p><a
-                                    class="h4" href="#"><i class="fa fa-arrow-circle-right"
-                                                           style="margin-left:23px;"></i></a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 cust_blogteaser" style="padding-bottom: 20px;margin-bottom: 32px;"><a
-                                    href="#"><img alt="" class="img-fluid" style="height:auto;" src="assets/img/image_03.png"></a>
-                            </div>
-                            <div class="col">
-                                <h3 style="text-align:left;margin-top:20px;font-family:'Open Sans', sans-serif;font-size:18px;margin-right:0;margin-left:24px;line-height:34px;letter-spacing:0px;font-style:normal;font-weight:bold;">
-                                    INS: Claims Executive Forum 2018<br></h3>
-                                <p class="text-secondary"
-                                   style="text-align:left;font-size:14px;font-family:'Open Sans', sans-serif;line-height:22px;color:rgb(9,9,10);margin-left:24px;">
-                                    Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam
-                                    in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id. </p><a
-                                    class="h4" href="#"><i class="fa fa-arrow-circle-right"
-                                                           style="margin-left:23px;"></i></a>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
+                </section>
+            </div>
+            <div class="container mb-3">
+                <h3>Читайте также:</h3>
+                <div class="cust_bloglistintro">
+                    <p style="margin-left:34px;color:rgba(255,255,255,0.5);font-size:14px;"></p>
+                </div>
+                <div class="row">
+                    {% for a in all_blogs %}
+                        <div class="col-md-4 cust_blogteaser" style="padding-bottom: 20px;margin-bottom: 32px;">
+                            <a href="{% url 'blog_ru_post' title=a.slug_title_ru %}">
+                                <img class="img-fluid rounded" style="height:300px; width: 300px; object-fit: cover;"
+                                     src="{{ a.image.url }}"
+                                     alt="{{ a.title_ru }}"
+                                     loading="lazy">
+                            </a>
+                            <h3 class="pt-2">
+                                {{ a.title_ru }}
+                            </h3>
+                            <p class="text-secondary">
+                                {{ a.short_description_ru }}
+                            </p>
+                            {% if a.views_count %}
+                                <span>
+                                    &#128064;: {{ a.blog_ip.count }}
+                                </span>
+                            {% endif %}
+                            <br>
+                            <span>
+                                {{ a.date }}
+                            </span><br>
+                            <a class="mt-2 button button-effect-ujarak button-xs button-primary-2 button-square"
+                               role="button" href="{% url 'blog_ru_post' title=a.slug_title_ru %}">
+                                    <span class="text-dark">
+                                        Читать
+                                    </span>
+                            </a>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
