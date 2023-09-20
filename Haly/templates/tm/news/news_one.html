@@ -17,6 +17,12 @@
     {% endfor %}
 {% endblock %}
 
+{% block lang_en%}
+    {% for n in news %}
+        {% url 'news_en_one' title=n.slug_title_en %}
+    {% endfor %}
+{% endblock %}
+
 {% block body %}
     <div class="container">
         <div class="row">

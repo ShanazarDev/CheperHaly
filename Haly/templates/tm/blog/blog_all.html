@@ -13,6 +13,10 @@
 	{% url 'blog_ru' %}
 {% endblock %}
 
+{% block lang_en %}
+	{% url 'blog_en' %}
+{% endblock %}
+
 {% block body %}
     {% if background %}
             {% for b in background %}

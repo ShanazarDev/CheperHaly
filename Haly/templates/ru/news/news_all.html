@@ -13,6 +13,10 @@
 	{% url 'news' %}
 {% endblock %}
 
+{% block lang_en %}
+	{% url 'news_en' %}
+{% endblock %}
+
 {% block body %}
     {% if background %}
             {% for b in background %}

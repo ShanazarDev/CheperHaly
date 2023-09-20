@@ -1,11 +1,5 @@
 {% extends 'ru/base.html' %}
 {% load static %}
-{% block style %}
-{#    <link rel="stylesheet" href="{% static 'assets/css/News-Cards.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'assets/css/cards-d_style.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'assets/css/Hero-Features-icons.css' %}">#}
-{#    <link rel="stylesheet" href="{% static 'assets/css/Lightbox-Gallery-baguetteBox.min.css' %}">#}
-{% endblock %}
 
 {% block title %}
     {% for n in news %}
@@ -20,6 +14,12 @@
 {% block lang_tm %}
     {% for n in news %}
         {% url 'news_one' title=n.slug_title %}
+    {% endfor %}
+{% endblock %}
+
+{% block lang_en %}
+    {% for n in news %}
+        {% url 'news_en_one' title=n.slug_title_en %}
     {% endfor %}
 {% endblock %}
 

@@ -17,6 +17,12 @@
     {% endfor %}
 {% endblock %}
 
+{% block lang_en %}
+    {% for b in blog %}
+        {% url 'blog_en_post' title=b.slug_title_en %}
+    {% endfor %}
+{% endblock %}
+
 {% block body %}
     <div class="container">
         <div class="row">
