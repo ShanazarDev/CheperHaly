@@ -9,7 +9,7 @@ def home(req):
         gallery_big_carpet = GalleryHomeModel.objects.filter(category='tabs-2-1').all()[:3]
         gallery_products = GalleryHomeModel.objects.filter(category='tabs-2-2').all()[:3]
         gallery_accessories = GalleryHomeModel.objects.filter(category='tabs-2-3').all()[:3]
-        background = HomeBackgroundModel.objects.order_by('-pk').all()
+        background = HomeBackgroundModel.objects.last()
         blogs_home = BlogModel.objects.order_by('-pk').all()[:3]
         return render(req, 'tm/index-1.html',
                       {
@@ -25,14 +25,14 @@ def home(req):
 
 
 def about_us(req):
-    background = HomeBackgroundModel.objects.order_by('-pk').all()
+    background = HomeBackgroundModel.objects.last()
     return render(req, 'tm/about-us.html', {'background': background})
 
 
 def gallery(req):
     if GalleryModel.objects.all() is not None:
         images = GalleryModel.objects.all()
-        background = HomeBackgroundModel.objects.order_by('-pk').all()
+        background = HomeBackgroundModel.objects.last()
         return render(req, 'tm/gallery/full-grid-gallery.html',
                       {'gallery': images, 'background': background})
     return render(req, 'tm/gallery/gallery.html')
@@ -42,7 +42,7 @@ def news(req):
     if NewsModel.objects.all() is not None:
         all_news = NewsModel.objects.all()
         top_news = [t for t in NewsModel.objects.filter(istop=True).order_by('-pk').all()[:2]]
-        background = HomeBackgroundModel.objects.order_by('-pk').all()
+        background = HomeBackgroundModel.objects.last()
         context = {
             'all_news': all_news,
             'top_news': top_news,
@@ -68,7 +68,7 @@ def blogs(req):
     if BlogModel.objects.all() is not None:
         all_blogs = BlogModel.objects.all()
         top_blog = [t for t in BlogModel.objects.filter(istop=True).all()[:2]]
-        background = HomeBackgroundModel.objects.order_by('-pk').all()
+        background = HomeBackgroundModel.objects.last()
         context = {
             'all_blogs': all_blogs,
             'top_blog': top_blog,

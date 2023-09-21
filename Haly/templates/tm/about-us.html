@@ -10,20 +10,18 @@
 {% endblock %}
 
 {% block lang_ru %}
-	{% url 'about_us_ru' %}
+    {% url 'about_us_ru' %}
 {% endblock %}
 
 {% block lang_en %}
-	{% url 'about_us_en' %}
+    {% url 'about_us_en' %}
 {% endblock %}
 
 
 {% block body %}
     {% if background %}
-        {% for b in background %}
-            <section class="section-lg text-center  bg-image"
-                     style="background-image: url({{ b.image.url }}); ">
-        {% endfor %}
+        <section class="section-lg text-center  bg-image"
+                 style="background-image: url({{ background.image.url }}); ">
     {% else %}
         <section class="section-lg text-center bg-image"
                  style="background-image: url({% static 'images/for_background.jpg' %}); ">

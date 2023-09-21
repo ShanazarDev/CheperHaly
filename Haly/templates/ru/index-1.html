@@ -10,11 +10,11 @@
 {% endblock %}
 
 {% block lang_tm %}
-	{% url 'home' %}
+    {% url 'home' %}
 {% endblock %}
 
 {% block lang_en %}
-	{% url 'home_en' %}
+    {% url 'home_en' %}
 {% endblock %}
 
 
@@ -23,10 +23,8 @@
         <section id="home" class="section section-layout section-xxs">
             {#background image#}
             {% if background %}
-                {% for b in background %}
                     <div class="container-wide bg-image bg-image-full"
-                         style="background-image: url({{ b.image.url }});">
-                {% endfor %}
+                         style="background-image: url({{ background.image.url }});">
             {% else %}
                 <div class="container-wide bg-image bg-image-full"
                      style="background-image: url({% static 'images/for_background.jpg' %});">
@@ -75,89 +73,91 @@
                 </div>
             </div>
             </div>
-        </section>
-        <section id="about-us" class="text-center section section-md bg-default text-md-left">
-            <div class="container-wide">
-                <div class="row justify-content-sm-center row-50 overflow-hidden">
-                    <div class="col-lg-6 col-xl-7 wow fadeInUp justify-content-md-center" data-wow-delay=".2s">
-                                                <video
-                                                        controls
-                                                        preload="none"
-                                                        width="100%"
-                                                        height="auto"
-                                                        poster="{% static 'images/bg-image-08.jpg' %}"
-                                                        data-setup="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}"
-                                                >
-                                                    <source src="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}" type="video/mp4"/>
-                                                </video>
+            </section>
+            <section id="about-us" class="text-center section section-md bg-default text-md-left">
+                <div class="container-wide">
+                    <div class="row justify-content-sm-center row-50 overflow-hidden">
+                        <div class="col-lg-6 col-xl-7 wow fadeInUp justify-content-md-center" data-wow-delay=".2s">
+                            <video
+                                    controls
+                                    preload="none"
+                                    width="100%"
+                                    height="auto"
+                                    poster="{% static 'images/bg-image-08.jpg' %}"
+                                    data-setup="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}"
+                            >
+                                <source src="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}" type="video/mp4"/>
+                            </video>
 
 
-                        {#                                                <div class="jp-video-init">#}
-                        {#                                                    <div class="jp-video jp-video-single">#}
-                        {#                                                        <div class="jp-type-playlist">#}
-                        {#                                                            <ul class="jp-player-list">#}
-                        {#                                                                <li class="jp-player-list-item"#}
-                        {#                                                                    data-jp-m4v="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}"#}
-                        {#                                                                    data-jp-title="local video"#}
-                        {#                                                                    data-jp-poster="{% static 'images/turk32.jpg' %}">#}
-                        {#                                                                </li>#}
-                        {#                                                            </ul>#}
-                        {#                                                            <div class="jp-jplayer"></div>#}
-                        {#                                                            <div class="jp-gui">#}
-                        {#                                                                <div class="jp-interface">#}
-                        {#                                                                    <div class="jp-controls-holder">#}
-                        {#                                                                        <a class="jp-play mdi mdi-play" tabindex="1"></a>#}
-                        {#                                                                        <a class="jp-pause mdi mdi-pause" tabindex="1"></a></div>#}
-                        {#                                                                </div>#}
-                        {#                                                            </div>#}
-                        {#                                                            <div class="jp-playlist">#}
-                        {#                                                                <ul>#}
-                        {#                                                                    <li></li>#}
-                        {#                                                                </ul>#}
-                        {#                                                            </div>#}
-                        {#                                                        </div>#}
-                        {#                                                    </div>#}
-                        {#                                                </div>#}
-                    </div>
-                    <div class="col-lg-6 col-xl-5 d-flex wow fadeInDown" data-wow-delay=".3s">
-                        <div class="bg-secondary-3 section-wrap-content-var-1">
-                            <div class="section-wrap-content-var-1-inner ">
-                                <h2>О нас</h2>
-                                <p class="text-left mt-3">
-                                    Государственное объединение «Туркменхалы» является основным
-                                    поставщиком на мировой
-                                    рынок знаменитых туркменских чистошерстяных ворсовых ковров ручной выработки из
-                                    Туркменистана.
-                                    Основными видами деятельности объединия являются производство и реализация
-                                    туркменских ковров и ковровых изделий, сохранение традиций ручного ковроделия,
-                                    восстановление старинных ковровых орнаментов и изделий.
-                                    ГО «Туркменхалы» в своем составе объединяет 8 предприятий художественного
-                                    ковроделия, которые имеют несколько ковровых участков и цехов, расположенных во всех
-                                    велаятах Туркменистана. На предприятиях художественного ковроделия работают около 5
-                                    тыс. ковровщиц.
-                                </p>
+                            {#                                                <div class="jp-video-init">#}
+                            {#                                                    <div class="jp-video jp-video-single">#}
+                            {#                                                        <div class="jp-type-playlist">#}
+                            {#                                                            <ul class="jp-player-list">#}
+                            {#                                                                <li class="jp-player-list-item"#}
+                            {#                                                                    data-jp-m4v="{% static 'images/5.1 Концепция MVC и MTV.mp4' %}"#}
+                            {#                                                                    data-jp-title="local video"#}
+                            {#                                                                    data-jp-poster="{% static 'images/turk32.jpg' %}">#}
+                            {#                                                                </li>#}
+                            {#                                                            </ul>#}
+                            {#                                                            <div class="jp-jplayer"></div>#}
+                            {#                                                            <div class="jp-gui">#}
+                            {#                                                                <div class="jp-interface">#}
+                            {#                                                                    <div class="jp-controls-holder">#}
+                            {#                                                                        <a class="jp-play mdi mdi-play" tabindex="1"></a>#}
+                            {#                                                                        <a class="jp-pause mdi mdi-pause" tabindex="1"></a></div>#}
+                            {#                                                                </div>#}
+                            {#                                                            </div>#}
+                            {#                                                            <div class="jp-playlist">#}
+                            {#                                                                <ul>#}
+                            {#                                                                    <li></li>#}
+                            {#                                                                </ul>#}
+                            {#                                                            </div>#}
+                            {#                                                        </div>#}
+                            {#                                                    </div>#}
+                            {#                                                </div>#}
+                        </div>
+                        <div class="col-lg-6 col-xl-5 d-flex wow fadeInDown" data-wow-delay=".3s">
+                            <div class="bg-secondary-3 section-wrap-content-var-1">
+                                <div class="section-wrap-content-var-1-inner ">
+                                    <h2>О нас</h2>
+                                    <p class="text-left mt-3">
+                                        Государственное объединение «Туркменхалы» является основным
+                                        поставщиком на мировой
+                                        рынок знаменитых туркменских чистошерстяных ворсовых ковров ручной выработки из
+                                        Туркменистана.
+                                        Основными видами деятельности объединия являются производство и реализация
+                                        туркменских ковров и ковровых изделий, сохранение традиций ручного ковроделия,
+                                        восстановление старинных ковровых орнаментов и изделий.
+                                        ГО «Туркменхалы» в своем составе объединяет 8 предприятий художественного
+                                        ковроделия, которые имеют несколько ковровых участков и цехов, расположенных во
+                                        всех
+                                        велаятах Туркменистана. На предприятиях художественного ковроделия работают
+                                        около 5
+                                        тыс. ковровщиц.
+                                    </p>
 
-                                <div class="d-flex group">
-                                    <dl class="list-desc">
-                                        <dt>Пн-Пт:</dt>
-                                        <dd><span>09:00–18:00</span></dd>
-                                    </dl>
+                                    <div class="d-flex group">
+                                        <dl class="list-desc">
+                                            <dt>Пн-Пт:</dt>
+                                            <dd><span>09:00–18:00</span></dd>
+                                        </dl>
+                                    </div>
+                                    <a class="button button-effect-ujarak button-lg button-secondary-outline-2 button-square"
+                                       href="{% url 'about_us_ru' %}">
+                                        <span>Читать дальше...</span>
+                                    </a>
                                 </div>
-                                <a class="button button-effect-ujarak button-lg button-secondary-outline-2 button-square"
-                                   href="{% url 'about_us_ru' %}">
-                                    <span>Читать дальше...</span>
-                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        {#gallery#}
-        {% include 'ru/gallery/gallery-for-home.html' %}
-        {#price#}
-        {% include 'ru/price.html' %}
-        {#Blog#}
-        {% include 'ru/blog/blog-for-home.html' %}
+            </section>
+            {#gallery#}
+            {% include 'ru/gallery/gallery-for-home.html' %}
+            {#price#}
+            {% include 'ru/price.html' %}
+            {#Blog#}
+            {% include 'ru/blog/blog-for-home.html' %}
     </main>
 {% endblock %}

@@ -21,10 +21,8 @@
     <main>
         <!-- Breadcrumbs & Page title-->
         {% if background %}
-            {% for b in background %}
                 <section class="section-lg text-center bg-image"
-                         style="background-image: url({{ b.image.url }}); ">
-            {% endfor %}
+                         style="background-image: url({{ background.image.url }}); ">
         {% else %}
             <section class="section-lg text-center bg-image"
                      style="background-image: url({% static 'images/for_background.jpg' %}); ">

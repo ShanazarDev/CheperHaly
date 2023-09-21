@@ -23,10 +23,8 @@
         <section id="home" class="section section-layout section-xxs">
             {#background image#}
             {% if background %}
-                {% for b in background %}
                     <div class="container-wide bg-image bg-image-full"
-                         style="background-image: url({{ b.image.url }});">
-                {% endfor %}
+                         style="background-image: url({{ background.image.url }});">
             {% else %}
                 <div class="container-wide bg-image bg-image-full"
                      style="background-image: url({% static 'images/for_background.jpg' %});">
