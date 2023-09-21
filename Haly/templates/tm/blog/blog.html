@@ -7,6 +7,38 @@
     {% endfor %}
 {% endblock %}
 
+{% block meta_og_title %}
+    {% for b in blog %}
+        {{ b.title }}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_description %}
+    {% for b in blog %}
+        {{ b.short_description }}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_og_description %}
+    {% for b in blog %}
+        {{ b.short_description|truncatewords:7 }}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_keywords %}
+    {% for b in blog %}
+        {% if b.meta_tags_keywords %}
+            {{ b.meta_tags_keywords }}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_og_url %}
+    {% for b in blog %}
+        {% url 'blog_post' title=b.slug_title %}
+    {% endfor %}
+{% endblock %}
+
 {% block active_blog %}
     active
 {% endblock %}

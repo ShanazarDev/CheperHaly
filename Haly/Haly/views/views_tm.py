@@ -31,7 +31,7 @@ def about_us(req):
 
 def gallery(req):
     if GalleryModel.objects.all() is not None:
-        images = GalleryModel.objects.all()
+        images = GalleryModel.objects.order_by('-pk')
         background = HomeBackgroundModel.objects.last()
         return render(req, 'tm/gallery/full-grid-gallery.html',
                       {'gallery': images, 'background': background})
@@ -40,7 +40,7 @@ def gallery(req):
 
 def news(req):
     if NewsModel.objects.all() is not None:
-        all_news = NewsModel.objects.all()
+        all_news = NewsModel.objects.order_by('-pk')
         top_news = [t for t in NewsModel.objects.filter(istop=True).order_by('-pk').all()[:2]]
         background = HomeBackgroundModel.objects.last()
         context = {
@@ -66,7 +66,7 @@ def news_one(req, title):
 
 def blogs(req):
     if BlogModel.objects.all() is not None:
-        all_blogs = BlogModel.objects.all()
+        all_blogs = BlogModel.objects.order_by('-pk')
         top_blog = [t for t in BlogModel.objects.filter(istop=True).all()[:2]]
         background = HomeBackgroundModel.objects.last()
         context = {

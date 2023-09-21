@@ -7,6 +7,38 @@
     {% endfor %}
 {% endblock %}
 
+{% block meta_og_title %}
+    {% for n in news %}
+        {{ n.title_en }}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_description %}
+    {% for n in news %}
+        {{ n.short_description_en }}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_og_description %}
+    {% for n in news %}
+        {{ n.short_description_en|truncatewords:7 }}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_keywords %}
+    {% for n in news %}
+        {% if n.meta_tags_keywords %}
+            {{ n.meta_tags_keywords }}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_og_url %}
+    {% for n in news %}
+        {% url 'news_en_one' title=n.slug_title_en %}
+    {% endfor %}
+{% endblock %}
+
 {% block active_news %}
     active
 {% endblock %}

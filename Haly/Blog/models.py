@@ -28,6 +28,10 @@ class BlogModel(models.Model):
 
     views_count = models.BooleanField(default=False, verbose_name='Количество просмотров')
 
+    meta_tags_keywords = models.CharField(max_length=1000, default='', null=True,
+                                          verbose_name='Ключевые слова для посиковика',
+                                          help_text='Записываете всечерез запятную (,)!!!')
+
     def image_to_admin(self):
         from django.utils.safestring import mark_safe
         return mark_safe('<img src="{}" width="100" />'.format(self.image.url))
