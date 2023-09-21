@@ -67,7 +67,7 @@ def news_one(req, title):
 def blogs(req):
     if BlogModel.objects.all() is not None:
         all_blogs = BlogModel.objects.order_by('-pk')
-        top_blog = [t for t in BlogModel.objects.filter(istop=True).all()[:2]]
+        top_blog = [t for t in BlogModel.objects.filter(istop=True).order_by('-pk').all()[:2]]
         background = HomeBackgroundModel.objects.last()
         context = {
             'all_blogs': all_blogs,

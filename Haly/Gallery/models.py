@@ -39,6 +39,13 @@ class GalleryModel(models.Model):
     image_to_admin.short_description = 'Image'
     image_to_admin.allow_tags = True
 
+    def __str__(self):
+        return f"{self.name}"
+
+    class Meta:
+        verbose_name = 'Haly'
+        verbose_name_plural = 'Halylar'
+
 
 class GalleryHomeModel(models.Model):
     category_choice = (
@@ -70,6 +77,13 @@ class GalleryHomeModel(models.Model):
 
     price = models.IntegerField(verbose_name='Стоисомть ковра', default=0)
 
+    def __str__(self):
+        return f"{self.name} {self.price}"
+
+    class Meta:
+        verbose_name = 'Haly bahalar'
+        verbose_name_plural = 'Haly bahalary'
+
 
 class HomeBackgroundModel(models.Model):
     image = models.ImageField(upload_to='background/', verbose_name='Фото заднего фона')
@@ -80,3 +94,7 @@ class HomeBackgroundModel(models.Model):
 
     image_to_admin.short_description = 'Image'
     image_to_admin.allow_tags = True
+
+    class Meta:
+        verbose_name = 'Arka fon'
+        verbose_name_plural = 'Arka fon'

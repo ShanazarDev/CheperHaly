@@ -39,7 +39,18 @@ class BlogModel(models.Model):
     image_to_admin.short_description = 'Image'
     image_to_admin.allow_tags = True
 
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name = 'Blog'
+        verbose_name_plural = 'Bloglar'
+
 
 class BlogViewsModel(models.Model):
     blog_foreign = models.ForeignKey(BlogModel, on_delete=models.CASCADE, related_name='blog_ip')
     views_ip = models.GenericIPAddressField(verbose_name='Ip addres')
+
+    class Meta:
+        verbose_name = 'Blog просмотры'
+        verbose_name_plural = 'Блог просмотры'

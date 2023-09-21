@@ -39,8 +39,19 @@ class NewsModel(models.Model):
     image_to_admin.short_description = 'Image'
     image_to_admin.allow_tags = True
 
+    def __str__(self):
+        return f"{self.title}"
+
+    class Meta:
+        verbose_name = 'Habarlar'
+        verbose_name_plural = 'Habarlar'
+
 
 class NewsViewModel(models.Model):
     news_post = models.ForeignKey(NewsModel, verbose_name='Новостной пост', on_delete=models.CASCADE,
                                   related_name='news_post')
     ip = models.GenericIPAddressField(verbose_name='Ip address')
+
+    class Meta:
+        verbose_name = 'Новости просмотры'
+        verbose_name_plural = 'Новости просмотры'
