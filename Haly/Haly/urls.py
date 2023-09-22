@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.sitemaps.views import sitemap
 from .views import (views_ru, views_en, views_tm)
 from django.conf.urls.static import static
 from django.conf import settings
 from .settings import DEBUG
+from Haly.sitemap import *
+
 
 urlpatterns_ru = [
     path('', views_ru.home, name='home_ru'),
@@ -41,6 +44,12 @@ urlpatterns_en = [
     path('blog/post/<title>', views_en.blog_post, name='blog_en_post')
 ]
 
+sitemaps = {
+    'static': StaticViewSitemap,
+    'news': NewsSiteMap,
+    'blog': BlogSiteMap
+    }
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ru/', include(urlpatterns_ru)),
@@ -51,7 +60,8 @@ urlpatterns = [
     path('about-us/', views_tm.about_us, name='about_us'),
     path('gallery/', views_tm.gallery, name='gallery'),
     path('blogs/', views_tm.blogs, name='blog'),
-    path('blog/post/<title>', views_tm.blog_post, name='blog_post')
+    path('blog/post/<title>', views_tm.blog_post, name='blog_post'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
 ]
 
 if DEBUG:

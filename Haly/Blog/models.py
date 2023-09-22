@@ -39,6 +39,9 @@ class BlogModel(models.Model):
     image_to_admin.short_description = 'Image'
     image_to_admin.allow_tags = True
 
+    def get_absolute_url(self):
+        return f'/blog/post/{self.slug_title}'
+
     def __str__(self):
         return f'{self.title}'
 
