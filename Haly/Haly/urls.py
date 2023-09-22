@@ -45,9 +45,10 @@ urlpatterns_en = [
 ]
 
 sitemaps = {
-    'static': StaticViewSitemap,
+    'static': StaticSiteMap,
     'news': NewsSiteMap,
-    'blog': BlogSiteMap
+    'blog': BlogSiteMap,
+    'always': AlwaysSitemap
     }
 
 urlpatterns = [
