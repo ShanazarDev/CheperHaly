@@ -19,7 +19,7 @@ class GalleryModel(models.Model):
                                    help_text='Haly barada gysgaca maglumat')
     description_ru = models.CharField(max_length=500, blank=True, null=False, verbose_name='Описание ковра',
                                       help_text='Краткое описанние ковра')
-    description_tm = models.CharField(max_length=500, blank=True, null=False, verbose_name='Description for carpet',
+    description_en = models.CharField(max_length=500, blank=True, null=False, verbose_name='Description for carpet',
                                       help_text='Short description of carpet')
 
     size_of_carpet = models.CharField(max_length=255, blank=True, null=True, verbose_name='Размер ковара',
@@ -32,6 +32,10 @@ class GalleryModel(models.Model):
                                 choices=category_choice, default='Category 1')
 
     price = models.IntegerField(verbose_name='Стоисомть ковра', default=0)
+
+    def save(self, *args, **kwargs):
+        self.image.name = f'{self.category}/{self.image.name}'
+        return super().save(*args, **kwargs)
 
     def image_to_admin(self):
         return mark_safe('<img src="{}" width="100" />'.format(self.image.url))
@@ -64,7 +68,7 @@ class GalleryHomeModel(models.Model):
                                    help_text='Haly barada gysgaca maglumat')
     description_ru = models.CharField(max_length=500, blank=True, null=False, verbose_name='Описание картины',
                                       help_text='Краткое описанние ковра')
-    description_tm = models.CharField(max_length=500, blank=True, null=False, verbose_name='Description for carpet',
+    description_en = models.CharField(max_length=500, blank=True, null=False, verbose_name='Description for carpet',
                                       help_text='Short description of carpet')
 
     size_of_carpet = models.CharField(max_length=255, blank=True, null=True, verbose_name='Размер ковара',
