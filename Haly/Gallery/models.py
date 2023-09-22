@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.safestring import mark_safe
+from django.shortcuts import redirect
 
 
 class GalleryModel(models.Model):
@@ -80,6 +81,11 @@ class GalleryHomeModel(models.Model):
                                 choices=category_choice, default='Category 1')
 
     price = models.IntegerField(verbose_name='Стоисомть ковра', default=0)
+
+    def save(self, *args, **kwargs):
+        if self.__class__.objects.filter(category=self.category).count() >= 3:
+            return
+        return super().save(*args, *kwargs)
 
     def __str__(self):
         return f"{self.name} {self.price}"
