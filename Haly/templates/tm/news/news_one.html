@@ -75,19 +75,19 @@
                         {% for n in news %}
                             <div class="row mb-5">
                                 <div class="col-md-8 col-xl-6 text-break text-center text-dark mx-auto">
-                                    <h2>{{ n.title }}</h2>
+                                    <h3>{{ n.title }}</h3>
                                     <p class="w-lg-50">{{ n.short_description }}</p>
                                     {% if n.views_count %}
                                         <span>
                                             &#128064;: {{ n.news_post.count }}
                                         </span><br>
                                     {% endif %}
-                                    <span>
+                                    <span><b>
                                         {{ n.date }}
-                                    </span>
+                                    </b></span>
                                 </div>
                             </div>
-                            <div class="container container-fluid w-100 text-break">
+                            <div class="container container-fluid ">
                                 {{ n.text|safe }}
                             </div>
                         {% endfor %}

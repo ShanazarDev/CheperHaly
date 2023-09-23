@@ -16,7 +16,7 @@
                         <ul class="nav nav-tabs mb-2">
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab"
-                                   href="#" data-isotope-filter="tabs-2-1"
+                                   href="" data-isotope-filter="tabs-2-1"
                                    data-isotope-group="gallery" style="font-size: 14px;">
                                     Uly halylar
                                 </a>
@@ -26,7 +26,7 @@
                                    data-toggle="tab"
                                    data-isotope-filter="tabs-2-2"
                                    data-isotope-group="gallery"
-                                   href="#" style="font-size: 14px;">
+                                   href="" style="font-size: 14px;">
                                     Haly önümleri
                                 </a>
                             </li>
@@ -34,17 +34,18 @@
                                 <a class="nav-link" data-toggle="tab"
                                    data-isotope-filter="tabs-2-3"
                                    data-isotope-group="gallery"
-                                   href="#" style="font-size: 14px;">
+                                   href="" style="font-size: 14px;">
                                     Beýlekiler
                                 </a>
                             </li>
                         </ul>
                     </div>
+
                     <hr>
                     <div class="tab-content isotope" data-isotope-layout="fitRows" data-isotope-group="gallery"
                          data-lightgallery="group">
                         {% for g in gallery_big_carpet %}
-                            <div class="bounce animated tab-pane fadeInDown active isotope-item container-wide"
+                            <div class="c1 bounce animated tab-pane fadeInDown active isotope-item container-wide"
                                  data-filter="{{ g.category }}">
                                 <div class="services-single-box">
                                     <div class="services-single-header">
@@ -61,7 +62,7 @@
                             </div>
                         {% endfor %}
                         {% for g in gallery_products %}
-                            <div class="bounce animated tab-pane fadeInDown active isotope-item container-wide"
+                            <div class="c2 bounce animated tab-pane fadeInDown active  isotope-item container-wide"
                                  data-filter="{{ g.category }}">
                                 <div class="services-single-box">
                                     <div class="services-single-header">
@@ -74,7 +75,7 @@
                             </div>
                         {% endfor %}
                         {% for g in gallery_accessories %}
-                            <div class="bounce animated tab-pane fadeInDown active isotope-item container-wide"
+                            <div class="c3 bounce animated tab-pane fadeInDown active  isotope-item container-wide"
                                  data-filter="{{ g.category }}">
                                 <div class="services-single-box">
                                     <div class="services-single-header">

@@ -22,13 +22,13 @@ class BlogModel(models.Model):
     image = models.ImageField(upload_to='Blog/%Y-%m-%d', verbose_name='Surat')
     date = models.DateTimeField(auto_now_add=True)
 
-    slug_title = models.SlugField(allow_unicode=True, verbose_name='Degmeli Dal!!!')
-    slug_title_ru = models.SlugField(allow_unicode=True, verbose_name='Ничего не писать!!!')
-    slug_title_en = models.SlugField(allow_unicode=True, verbose_name='Dont touch!!!')
+    slug_title = models.SlugField(max_length=500, allow_unicode=True, verbose_name='Degmeli Dal!!!')
+    slug_title_ru = models.SlugField(max_length=500, allow_unicode=True, verbose_name='Ничего не писать!!!')
+    slug_title_en = models.SlugField(max_length=500, allow_unicode=True, verbose_name='Dont touch!!!')
 
     views_count = models.BooleanField(default=False, verbose_name='Количество просмотров')
 
-    meta_tags_keywords = models.CharField(max_length=1000, default='', null=True,
+    meta_tags_keywords = models.CharField(max_length=1000, default='', null=True, blank=True,
                                           verbose_name='Ключевые слова для посиковика',
                                           help_text='Записываете всечерез запятную (,)!!!')
 

@@ -45,7 +45,8 @@ def news(req):
         background = HomeBackgroundModel.objects.last()
         context = {
             'all_news': all_news,
-            'top_news': top_news,
+            'top_1': top_news[0],
+            'top_2': top_news[1],
             'background': background
         }
         return render(req, 'ru/news/news_all.html', context)
@@ -71,7 +72,8 @@ def blogs(req):
         background = HomeBackgroundModel.objects.last()
         context = {
             'all_blogs': all_blogs,
-            'top_blog': top_blog,
+            'top_1': top_blog[0],
+            'top_2': top_blog[1],
             'background': background
         }
         return render(req, 'ru/blog/blog_all.html', context)
