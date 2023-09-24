@@ -15,14 +15,14 @@
                         </h3>
                         <ul class="nav nav-tabs mb-2">
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab"
+                                <a id="tabs-2-1" class="nav-link" data-toggle="tab"
                                    href="#" data-isotope-filter="tabs-2-1"
                                    data-isotope-group="gallery" style="font-size: 14px;">
                                     Big Carpets
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"
+                                <a id="tabs-2-2" class="nav-link"
                                    data-toggle="tab"
                                    data-isotope-filter="tabs-2-2"
                                    data-isotope-group="gallery"
@@ -31,7 +31,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab"
+                                <a id="tabs-2-3" class="nav-link" data-toggle="tab"
                                    data-isotope-filter="tabs-2-3"
                                    data-isotope-group="gallery"
                                    href="#" style="font-size: 14px;">
@@ -43,10 +43,10 @@
                     <hr>
                     <div class="tab-content isotope" data-isotope-layout="fitRows" data-isotope-group="gallery"
                          data-lightgallery="group">
-                        {% for g in gallery_big_carpet %}
-                            <div class="bounce animated tab-pane fadeInDown active isotope-item container-wide"
-                                 data-filter="{{ g.category }}">
-                                <div class="services-single-box">
+                        <div id="c1" class="bounce animated tab-pane fadeInDown active isotope-item container-wide"
+                             data-filter="tabs-2-1">
+                            {% for g in gallery_big_carpet %}
+                                <div class="services-single-box pb-5">
                                     <div class="services-single-header">
                                         <div class="services-single-title">
                                             <span> {{ g.name_en }} </span></div>
@@ -54,16 +54,12 @@
                                     </div>
                                     <p class="services-single-body text-break"> {{ g.description_en }}</p>
                                 </div>
-                            </div>
-                        {% empty %}
-                            <div>
-                                There are no prices for carpets yet!
-                            </div>
-                        {% endfor %}
-                        {% for g in gallery_products %}
-                            <div class="bounce animated tab-pane fadeInDown active isotope-item container-wide"
-                                 data-filter="{{ g.category }}">
-                                <div class="services-single-box">
+                            {% endfor %}
+                        </div>
+                        <div id="c2" class="bounce animated tab-pane fadeInDown isotope-item container-wide"
+                             data-filter="tabs-2-2">
+                            {% for g in gallery_products %}
+                                <div class="services-single-box pb-5">
                                     <div class="services-single-header">
                                         <div class="services-single-title">
                                             <span> {{ g.name_en }} </span></div>
@@ -71,12 +67,12 @@
                                     </div>
                                     <p class="services-single-body text-break"> {{ g.description_en }}</p>
                                 </div>
-                            </div>
-                        {% endfor %}
-                        {% for g in gallery_accessories %}
-                            <div class="bounce animated tab-pane fadeInDown active isotope-item container-wide"
-                                 data-filter="{{ g.category }}">
-                                <div class="services-single-box">
+                            {% endfor %}
+                        </div>
+                        <div id="c3" class="bounce animated tab-pane fadeInDown isotope-item container-wide"
+                             data-filter="tabs-2-3">
+                            {% for g in gallery_accessories %}
+                                <div class="services-single-box pb-5">
                                     <div class="services-single-header">
                                         <div class="services-single-title">
                                             <span> {{ g.name_en }} </span></div>
@@ -84,8 +80,8 @@
                                     </div>
                                     <p class="services-single-body text-break"> {{ g.description_en }}</p>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,3 +89,29 @@
         </div>
     </div>
 </section>
+
+
+<script>
+    const tab1 = document.getElementById("tabs-2-1");
+    const tab2 = document.getElementById("tabs-2-2");
+    const tab3 = document.getElementById("tabs-2-3");
+    const divC1 = document.getElementById("c1")
+    const divC2 = document.getElementById("c2")
+    const divC3 = document.getElementById("c3")
+
+    tab1.addEventListener("click", () => {
+        divC2.classList.remove('active')
+        divC3.classList.remove('active')
+        divC1.classList.add("active");
+    });
+    tab2.addEventListener("click", () => {
+        divC1.classList.remove("active");
+        divC3.classList.remove("active");
+        divC2.classList.add("active");
+    });
+    tab3.addEventListener("click", () => {
+        divC1.classList.remove("active");
+        divC2.classList.remove("active");
+        divC3.classList.add("active");
+    });
+</script>
