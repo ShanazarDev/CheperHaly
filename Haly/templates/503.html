@@ -1,0 +1,30 @@
+{% extends 'tm/base.html' %}
+{% load static %}
+{% block body %}
+    <main>
+        <section class="section section-lg section-xl bg-accent text-center bg-image"
+                 style="background-image: url({% static 'images/bg-image-08.jpg' %});">
+            <div class="container">
+                <div class="row justify-content-lg-center">
+                    <div class="col-lg-7">
+                        <h3>Hyzmat wagtlaýyn elýeterli däl</h3>
+                        <div class="extra-large">503</div>
+                        <p class="big">Bagyşlaň, sahypamyzy hasam gowulandyrmak üçin şu wagt awtonom däl. Haýyş edýäris,
+                            gaýdyp geliň soňrak.</p>
+                        <div class="group-sm group-middle group-center">
+                            <a class="button button-effect-ujarak button-square button-primary button-icon button-icon-left"
+                               href="{% url 'home' %}">
+                                <span class="icon mdi mdi-arrow-left"></span>
+                                <span>Baş sahypa</span>
+                            </a>
+                            {#                            <a#}
+                            {#                                class="button button-effect-ujarak button-square button-icon button-icon-left button-gray-dark-outline"#}
+                            {#                                href="contacts.html"><span#}
+                            {#                                class="icon mdi mdi-email-outline"></span><span>contact us</span></a></div>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

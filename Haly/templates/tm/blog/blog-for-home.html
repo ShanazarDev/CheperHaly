@@ -28,7 +28,7 @@
                                 </h5>
                                 <div class="post-box-minimal-meta-bottom">
                                     <span class="post-box-icon mdi mdi-clock">
-                                        {{ b.date }}<br>
+                                        {{ b.date|date:"d.m.Y H:i" }}<br>
                                         <a href="{% url 'blog_post' title=b.slug_title %}">
                                            {% if b.views_count %}
                                                &#128064;: {{ b.blog_ip.count }}

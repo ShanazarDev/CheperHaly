@@ -87,7 +87,7 @@
                                         </span>
                                     {% endif %}
                                     <p>
-                                        {{ b.date }}
+                                        {{ b.date|date:"d.m.Y H:i" }}
                                     </p>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@
                             {% endif %}
                             <br>
                             <span>
-                                {{ a.date }}
+                                {{ a.date|date:"d.m.Y H:i" }}
                             </span><br>
                             <a class="mt-2 button button-effect-ujarak button-xs button-primary-2 button-square"
                                role="button" href="{% url 'blog_post' title=a.slug_title %}">

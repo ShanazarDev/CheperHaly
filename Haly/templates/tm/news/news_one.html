@@ -83,7 +83,7 @@
                                         </span><br>
                                     {% endif %}
                                     <span><b>
-                                        {{ n.date }}
+                                        {{ n.date|date:"d.m.Y H:i" }}
                                     </b></span>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                                 </span>
                             {% endif %}
                             <p>
-                                {{ r.date }}
+                                {{ r.date|date:"d.m.Y H:i" }}
                             </p>
                             <a class="mt-2 button button-effect-ujarak button-xs button-primary-2 button-square"
                                role="button" href="{% url 'news_one' title=r.slug_title %}">

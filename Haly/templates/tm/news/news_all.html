@@ -33,7 +33,7 @@
             <h2 class="text-white">Habarlar</h2>
             <ul class="breadcrumbs-custom">
                 <li>
-                    <a href="{% url 'home' %}">Esasy</a>
+                    <a href="{% url 'home' %}">Baş sahypa</a>
                 </li>
                 <li class="active">Ähli habarlar</li>
             </ul>
@@ -64,7 +64,7 @@
                                         &#128064;: {{ top_1.news_post.count }}
                                         <br>
                                     {% endif %}
-                                    {{ top_1.date }}
+                                    {{ top_1.date|date:"d.m.Y H:i" }}
                                 </p>
                                 <a class="button button-effect-ujarak button-lg button-primary-2 button-square"
                                    role="button" href="{% url 'news_one' title=top_1.slug_title %}">
@@ -96,7 +96,7 @@
                                         &#128064;: {{ top_2.news_post.count }}
                                         <br>
                                     {% endif %}
-                                    {{ top_2.date }}
+                                    {{ top_2.date|date:"d.m.Y H:i" }}
                                 </p>
                                 <a class="button button-effect-ujarak button-lg button-primary-2 button-square"
                                    role="button" href="{% url 'news_one' title=top_2.slug_title %}">
@@ -153,7 +153,7 @@
                     {% endif %}
                 </p>
                 <p>
-                    {{ all.date }}
+                    {{ all.date|date:"d.m.Y H:i" }}
                 </p>
                 <a class="mt-2 button button-effect-ujarak button-sm button-primary-2 button-square"
                    role="button" href="{% url 'news_one' title=all.slug_title %}">

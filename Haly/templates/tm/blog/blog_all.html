@@ -32,7 +32,7 @@
             <h2 class="text-white">Blog</h2>
             <ul class="breadcrumbs-custom">
                 <li>
-                    <a href="{% url 'home' %}">Esas</a>
+                    <a href="{% url 'home' %}">Baş sahypa</a>
                 </li>
                 <li>
                     <a href="{% url 'home' %}#blog">Blog</a>
@@ -65,7 +65,7 @@
                                     {% if top_1.views_count %}
                                         &#128064;: {{ top_1.blog_ip.count }}<br>
                                     {% endif %}
-                                    <span>{{ top_1.date }}</span>
+                                    <span>{{ top_1.date|date:"d.m.Y H:i" }}</span>
                                 </p>
                                 <a
                                         class="button button-effect-ujarak button-lg button-primary-2 button-square"
@@ -98,7 +98,7 @@
                                     {% if top_1.views_count %}
                                         &#128064;: {{ top_2.blog_ip.count }}<br>
                                     {% endif %}
-                                    <span>{{ top_2.date }}</span>
+                                    <span>{{ top_2.date|date:"d.m.Y H:i" }}</span>
                                 </p>
                                 <a
                                         class="button button-effect-ujarak button-lg button-primary-2 button-square"
@@ -153,7 +153,7 @@
                         </span>
                 {% endif %}
                 <p>
-                    {{ a.date }}
+                    {{ a.date|date:"d.m.Y H:i" }}
                 </p>
                 <a class="mt-2 button button-effect-ujarak button-xs button-primary-2 button-square"
                    role="button" href="{% url 'blog_post' title=a.slug_title %}">

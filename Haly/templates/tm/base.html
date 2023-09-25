@@ -93,15 +93,16 @@
                                 <div class="col-6 center-side" style="padding-right: 30px">
                                     <div class="rd-navbar-brand fullwidth-brand">
                                         <a class="brand-name" href="{% url 'home' %}">
-                                            <img src="{% static 'images/turkmenhaly_logo.png' %}" alt="logo" width="130"
+                                            <img src="{% static 'images/turkmenhaly_logo.png' %}" alt="logo"
+                                                 width="130"
                                                  height="50">
-{#                                            <p style="font-size: 30px">#}
-{#                                                Turkmen Haly#}
-{#                                            </p>#}
+                                            {#                                            <p style="font-size: 30px">#}
+                                            {#                                                Turkmen Haly#}
+                                            {#                                            </p>#}
                                         </a>
                                     </div>
-                                    <br>
                                 </div>
+                                <br>
                                 <div class="col d-xxl-flex justify-content-xxl-end align-items-xxl-center">
                                     <div class="contact-info">
                                         <div class="flex-row align-items-center unit unit-spacing-xs">
@@ -122,19 +123,20 @@
                 </div>
                 <div class="rd-navbar-inner">
                     <div class="rd-navbar-panel">
-                        <button class="rd-navbar-toggle"
-                                data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
-                        <button
-                                class="rd-navbar-collapse-toggle"
-                                data-rd-navbar-toggle=".rd-navbar-collapse"><span></span></button>
+                        <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap">
+                            <span></span>
+                        </button>
+                        <button class="rd-navbar-collapse-toggle" data-rd-navbar-toggle=".rd-navbar-collapse">
+                            <span></span>
+                        </button>
                         <div class="rd-navbar-brand mobile-brand">
                             <a class="brand-name"
                                style="font-family: 'Poppins', sans-serif;"
                                href="{% url 'home' %}">
-                                <img
-                                        src="{% static 'images/turkmenhaly_logo.png' %}" alt="turkmenhalylogo"
-                                        width="50"
-                                        height="50">
+                                <img src="{% static 'images/turkmenhaly_logo.png' %}"
+                                     alt="turkmenhalylogo"
+                                     width="50"
+                                     height="50"/>
                                 {% block logo %}
                                     Türkmen Haly
                                 {% endblock %}
@@ -268,7 +270,7 @@
                                 <hr class="divider divider-sm divider-left">
                                 <ul class="nav-list list-column-3">
                                     <li>
-                                        <a class="link" href="{% url 'home' %}#home">Esas</a>
+                                        <a class="link" href="{% url 'home' %}#home">Baş sahypa</a>
                                     </li>
                                     <li>
                                         <a class="link" href="{% url 'about_us' %}">Biz barada</a>
