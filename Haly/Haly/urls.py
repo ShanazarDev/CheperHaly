@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from .settings import DEBUG
 from Haly.sitemap import *
+from News.feeds import NewsRSS
 
 
 urlpatterns_ru = [
@@ -63,6 +64,7 @@ urlpatterns = [
     path('blogs/', views_tm.blogs, name='blog'),
     path('blog/post/<title>', views_tm.blog_post, name='blog_post'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    path('rss/', NewsRSS())
 ]
 
 if DEBUG:

@@ -1,5 +1,28 @@
+# venv
 venv/
-db.sqlite3
-Haly/Haly/__pycache__/
-../.idea/
+
+# DB
+Haly/db.sqlite3
+
+# docker
+Haly/.dockerignore
+
+# Static
 Haly/static/images/
+
+# Migrations
+Haly/Blog/migrations/
+Haly/Gallery/migrations/
+Haly/News/migrations/
+Haly/Haly/migrations/
+
+# Pycache
+Haly/Haly/__pycache__/
+Haly/Blog/__pycache__/
+Haly/Gallery/__pycache__/
+Haly/News/__pycache__/
+Haly/__pycache__/
+Haly/Gallery/templatetags/__pycache__/
+
+# idea
+**.idea/**

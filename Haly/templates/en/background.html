@@ -1,0 +1,21 @@
+{% load static %}
+
+
+{% if back %}
+    {% if lg %}
+        <section class="section-lg text-center  bg-image"
+                 style="background-image: url({{ back.image.url }}); ">
+    {% elif lg == False and section == True %}
+        <section class="section-lg text-center  bg-image"
+                 style="background-image: url({{ back.image.url }}); ">
+    {% else %}
+        <div class="container-wide bg-image bg-image-full"
+             style="background-image: url({{ back.image.url }});">
+    {% endif %}
+{% elif back == None and section == True %}
+    <section class="section-lg text-center  bg-image"
+             style="background-image: url({% static 'images/for_background.jpg' %});">
+{% else %}
+    <div class="container-wide bg-image bg-image-full"
+         style="background-image: url({% static 'images/for_background.jpg' %});">
+{% endif %}

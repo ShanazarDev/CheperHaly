@@ -16,8 +16,8 @@ class NewsAdmin(admin.ModelAdmin):
     readonly_fields = ['image_to_admin']
 
 
-@admin.register(NewsViewModel)
-class NewsViewModelAdmin(admin.ModelAdmin):
-    model = NewsViewModel
-    list_display = ('pk', 'news_post', 'ip')
+# @admin.register(NewsViewModel)
+# class NewsViewModelAdmin(admin.ModelAdmin):
+#     model = NewsViewModel
+#     list_display = ('pk', 'news_post', 'ip')
 

@@ -1,5 +1,6 @@
 {% extends 'en/base.html' %}
 {% load static %}
+{% load background_tag %}
 
 {% block title %}
     Turkmen Carpet
@@ -20,14 +21,8 @@
 {% block body %}
     <main>
         <section id="home" class="section section-layout section-xxs">
-            {#background image#}
-            {% if background %}
-                    <div class="container-wide bg-image bg-image-full"
-                         style="background-image: url({{ background.image.url }});">
-            {% else %}
-                <div class="container-wide bg-image bg-image-full"
-                     style="background-image: url({% static 'images/for_background.jpg' %});">
-            {% endif %}
+
+            {% back_home %}
 
             <div class="row justify-content-sm-center row-30 row-custom">
                 <div class="col-md-12 col-xl-7">

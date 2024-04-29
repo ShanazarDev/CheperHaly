@@ -1,5 +1,6 @@
 {% extends 'en/base.html' %}
 {% load static %}
+{% load background_tag %}
 
 {% block title %}
     News
@@ -18,14 +19,7 @@
 {% endblock %}
 
 {% block body %}
-    {% if background %}
-        <section class="section-lg text-center bg-image"
-                 style="background-image: url({{ background.image.url }}); ">
-    {% else %}
-        <section class="section-lg text-center bg-image"
-                 style="background-image: url({% static 'images/for_background.jpg' %}); ">
-    {% endif %}
-
+{% back_home True True %}
 <div class="container container-fluid">
     <div class="row justify-content-sm-center">
         <div class="col-sm-12 col-xxl-11">

@@ -3,26 +3,27 @@ from ckeditor.fields import RichTextField
 
 
 class NewsModel(models.Model):
-    title = models.CharField(max_length=500, blank=False, null=False, unique=True, verbose_name='Habaryn ady')
-    title_ru = models.CharField(max_length=500, blank=False, null=False, unique=True, verbose_name='Загаловок')
-    title_en = models.CharField(max_length=500, blank=False, null=False, unique=True, verbose_name='Title')
+    title = models.CharField(max_length=500, blank=False, null=False, unique=True, verbose_name='Habaryn ady (TM)')
+    title_ru = models.CharField(max_length=500, blank=False, null=False, unique=True, verbose_name='Загаловок (RU)')
+    title_en = models.CharField(max_length=500, blank=False, null=False, unique=True, verbose_name='Title (EN)')
 
     short_description = models.CharField(max_length=1000, blank=False, null=False,
-                                         verbose_name='Haba barada gysgaca maglumat')
+                                         verbose_name='Habar barada gysgaca maglumat (TM)')
     short_description_ru = models.CharField(max_length=1000, blank=False, null=False,
-                                            verbose_name='Краткое описание')
+                                            verbose_name='Краткое описание (RU)')
     short_description_en = models.CharField(max_length=1000, blank=False, null=False,
-                                            verbose_name='Short description')
+                                            verbose_name='Short description (EN)')
 
-    text = RichTextField(blank=False, null=False, verbose_name='Habaryn beryany')
-    text_ru = RichTextField(blank=False, null=False, verbose_name='Описание новостя')
-    text_en = RichTextField(blank=False, null=False, verbose_name='Description of news')
+    text = RichTextField(blank=False, null=False, verbose_name='Habaryn beryany (TM)')
+    text_ru = RichTextField(blank=False, null=False, verbose_name='Описание новостя (RU)')
+    text_en = RichTextField(blank=False, null=False, verbose_name='Description of news (EN)')
 
     istop = models.BooleanField(default=False, verbose_name="Esasy habarmy")
     image = models.ImageField(upload_to='News/%Y-%m-%d', verbose_name='Surat')
     date = models.DateTimeField(auto_now_add=True)
 
-    slug_title = models.SlugField(max_length=500, allow_unicode=True, verbose_name='Degmeli Dal!!!')
+    slug_title = models.SlugField(max_length=500, allow_unicode=True, verbose_name='Degmeli Dal!!!',
+                                  help_text='Degmeli Dal!!!')
     slug_title_ru = models.SlugField(max_length=500, allow_unicode=True, verbose_name='Ничего не писать!!!')
     slug_title_en = models.SlugField(max_length=500, allow_unicode=True, verbose_name='Dont touch!!!')
 

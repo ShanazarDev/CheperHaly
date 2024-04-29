@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from Gallery.models import GalleryModel, GalleryHomeModel, HomeBackgroundModel
+from Gallery.models import GalleryModel, GalleryHomeModel
 from News.models import NewsModel, NewsViewModel
 from Blog.models import BlogModel, BlogViewsModel
 
@@ -9,11 +9,9 @@ def home(req):
         gallery_big_carpet = GalleryHomeModel.objects.filter(category='tabs-2-1').all()[:3]
         gallery_products = GalleryHomeModel.objects.filter(category='tabs-2-2').all()[:3]
         gallery_accessories = GalleryHomeModel.objects.filter(category='tabs-2-3').all()[:3]
-        background = HomeBackgroundModel.objects.last()
         blogs_home = BlogModel.objects.order_by('-pk').all()[:3]
         return render(req, 'en/index-1.html',
                       {
-                          'background': background,
                           'blog_home': blogs_home,
                           'gallery_big_carpet': gallery_big_carpet,
                           'gallery_products': gallery_products,
@@ -25,16 +23,13 @@ def home(req):
 
 
 def about_us(req):
-    background = HomeBackgroundModel.objects.last()
-    return render(req, 'en/about-us.html', {'background': background})
+    return render(req, 'en/about-us.html')
 
 
 def gallery(req):
     if GalleryModel.objects.all() is not None:
         images = GalleryModel.objects.order_by('-pk')
-        background = HomeBackgroundModel.objects.last()
-        return render(req, 'en/gallery/full-grid-gallery.html',
-                      {'gallery_en': images, 'background': background})
+        return render(req, 'en/gallery/full-grid-gallery.html', {'gallery_en': images})
     return render(req, 'en/gallery/gallery.html')
 
 
@@ -42,12 +37,10 @@ def news(req):
     if NewsModel.objects.all() is not None:
         all_news = NewsModel.objects.order_by('-pk')
         top_news = [t for t in NewsModel.objects.filter(istop=True).order_by('-pk').all()[:2]]
-        background = HomeBackgroundModel.objects.last()
         context = {
             'all_news': all_news,
             'top_1': top_news[0],
             'top_2': top_news[1],
-            'background': background
         }
         return render(req, 'en/news/news_all.html', context)
     return render(req, 'en/news/news.html')
@@ -69,12 +62,10 @@ def blogs(req):
     if BlogModel.objects.all() is not None:
         all_blogs = BlogModel.objects.order_by('-pk')
         top_blog = [t for t in BlogModel.objects.filter(istop=True).order_by('-pk').all()[:2]]
-        background = HomeBackgroundModel.objects.last()
         context = {
             'all_blogs': all_blogs,
             'top_1': top_blog[0],
             'top_2': top_blog[1],
-            'background': background
         }
         return render(req, 'en/blog/blog_all.html', context)
     return render(req, 'en/blog/empty-blog.html')
