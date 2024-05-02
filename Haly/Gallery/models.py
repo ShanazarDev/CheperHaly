@@ -11,28 +11,15 @@ class GalleryModel(models.Model):
     )
     name = models.CharField(max_length=225, blank=True, null=False, verbose_name='Halynyn ady',
                             help_text='Halynyn ady')
-    name_ru = models.CharField(max_length=225, blank=True, null=False, verbose_name='Название ковра',
-                               help_text='Название ковра')
-    name_en = models.CharField(max_length=225, blank=True, null=False, verbose_name='Carpet name',
-                               help_text='Carpet name')
-
     description = models.CharField(max_length=500, blank=True, null=False, verbose_name='Haly barada maglumat',
                                    help_text='Haly barada gysgaca maglumat')
-    description_ru = models.CharField(max_length=500, blank=True, null=False, verbose_name='Описание ковра',
-                                      help_text='Краткое описанние ковра')
-    description_en = models.CharField(max_length=500, blank=True, null=False, verbose_name='Description for carpet',
-                                      help_text='Short description of carpet')
-
-    size_of_carpet = models.CharField(max_length=255, blank=True, null=True, verbose_name='Размер ковара',
+    size_of_carpet = models.CharField(max_length=255, blank=True, null=True, verbose_name='Haly razmery',
                                       help_text='4,5 m x 5 m')
-
-    image = models.ImageField(upload_to='gallery/', verbose_name='Картина')
-    date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создание')
-
-    category = models.CharField(max_length=50, verbose_name='Категория картиины', blank=False, null=False,
+    image = models.ImageField(upload_to='gallery/', verbose_name='Surat')
+    date = models.DateTimeField(auto_now_add=True, verbose_name='Doredilen senesi')
+    category = models.CharField(max_length=50, verbose_name='Haly kategoriyasy', blank=False, null=False,
                                 choices=category_choice, default='Category 1')
-
-    price = models.IntegerField(verbose_name='Стоисомть ковра', default=0)
+    price = models.IntegerField(verbose_name='Bahasy', default=0)
 
     def save(self, *args, **kwargs):
         self.image.name = f'{self.category}/{self.image.name}'
@@ -60,31 +47,19 @@ class GalleryHomeModel(models.Model):
     )
     name = models.CharField(max_length=225, blank=True, null=False, verbose_name='Halynyn ady',
                             help_text='Halynyn ady')
-    name_ru = models.CharField(max_length=225, blank=True, null=False, verbose_name='Название кора',
-                               help_text='Название ковра')
-    name_en = models.CharField(max_length=225, blank=True, null=False, verbose_name='Carpet name',
-                               help_text='Carpet name')
-
     description = models.CharField(max_length=500, blank=True, null=False, verbose_name='Haly barada maglumat',
                                    help_text='Haly barada gysgaca maglumat')
-    description_ru = models.CharField(max_length=500, blank=True, null=False, verbose_name='Описание картины',
-                                      help_text='Краткое описанние ковра')
-    description_en = models.CharField(max_length=500, blank=True, null=False, verbose_name='Description for carpet',
-                                      help_text='Short description of carpet')
-
-    size_of_carpet = models.CharField(max_length=255, blank=True, null=True, verbose_name='Размер ковара',
+    size_of_carpet = models.CharField(max_length=255, blank=True, null=True, verbose_name='Haly razmery',
                                       help_text='4,5 m x 5 m')
-
-    date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создание')
-
-    category = models.CharField(max_length=50, verbose_name='Категория картиины', blank=False, null=False,
+    date = models.DateTimeField(auto_now_add=True, verbose_name='Doredilen senesi')
+    category = models.CharField(max_length=50, verbose_name='Haly kategoriyasy', blank=False, null=False,
                                 choices=category_choice, default='Category 1')
-
-    price = models.IntegerField(verbose_name='Стоисомть ковра', default=0)
+    price = models.IntegerField(verbose_name='Bahasy', default=0)
 
     def save(self, *args, **kwargs):
         if self.__class__.objects.filter(category=self.category).count() >= 3:
             return
+            # raise ValidationError(f"Dine 3 haly bir kategoriya birikdirip bolyar {self.category}")
         return super().save(*args, *kwargs)
 
     def __str__(self):
@@ -96,7 +71,7 @@ class GalleryHomeModel(models.Model):
 
 
 class HomeBackgroundModel(models.Model):
-    image = models.ImageField(upload_to='background/', verbose_name='Фото заднего фона')
+    image = models.ImageField(upload_to='background/', verbose_name='Arka fon')
     date = models.DateTimeField(auto_now_add=True)
 
     def image_to_admin(self):

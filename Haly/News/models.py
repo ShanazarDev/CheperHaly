@@ -1,34 +1,19 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from Blog.models import ReadonlySlugField
 
 
 class NewsModel(models.Model):
-    title = models.CharField(max_length=500, blank=False, null=False, unique=True, verbose_name='Habaryn ady (TM)')
-    title_ru = models.CharField(max_length=500, blank=False, null=False, unique=True, verbose_name='Загаловок (RU)')
-    title_en = models.CharField(max_length=500, blank=False, null=False, unique=True, verbose_name='Title (EN)')
-
+    title = models.CharField(max_length=500, blank=False, null=False, unique=True, verbose_name='Habaryn ady')
     short_description = models.CharField(max_length=1000, blank=False, null=False,
-                                         verbose_name='Habar barada gysgaca maglumat (TM)')
-    short_description_ru = models.CharField(max_length=1000, blank=False, null=False,
-                                            verbose_name='Краткое описание (RU)')
-    short_description_en = models.CharField(max_length=1000, blank=False, null=False,
-                                            verbose_name='Short description (EN)')
-
-    text = RichTextField(blank=False, null=False, verbose_name='Habaryn beryany (TM)')
-    text_ru = RichTextField(blank=False, null=False, verbose_name='Описание новостя (RU)')
-    text_en = RichTextField(blank=False, null=False, verbose_name='Description of news (EN)')
-
+                                         verbose_name='Habar barada gysgaca maglumat')
+    text = RichTextField(blank=False, null=False, verbose_name='Habaryn beryany')
     istop = models.BooleanField(default=False, verbose_name="Esasy habarmy")
     image = models.ImageField(upload_to='News/%Y-%m-%d', verbose_name='Surat')
     date = models.DateTimeField(auto_now_add=True)
-
-    slug_title = models.SlugField(max_length=500, allow_unicode=True, verbose_name='Degmeli Dal!!!',
-                                  help_text='Degmeli Dal!!!')
-    slug_title_ru = models.SlugField(max_length=500, allow_unicode=True, verbose_name='Ничего не писать!!!')
-    slug_title_en = models.SlugField(max_length=500, allow_unicode=True, verbose_name='Dont touch!!!')
-
-    views_count = models.BooleanField(default=False, verbose_name='Количество просмотров')
-
+    slug_title = ReadonlySlugField(max_length=500, allow_unicode=True, verbose_name='Degmeli Dal!!!',
+                                   help_text='Degmeli Dal!!!')
+    views_count = models.BooleanField(default=False, verbose_name='Habarlaryn gorkezilen sany')
     meta_tags_keywords = models.CharField(max_length=1000, default='', null=True, blank=True,
                                           verbose_name='Ключевые слова для посиковика',
                                           help_text='Записываете всечерез запятную (,)!!!')
@@ -52,10 +37,10 @@ class NewsModel(models.Model):
 
 
 class NewsViewModel(models.Model):
-    news_post = models.ForeignKey(NewsModel, verbose_name='Новостной пост', on_delete=models.CASCADE,
+    news_post = models.ForeignKey(NewsModel, verbose_name='Habar', on_delete=models.CASCADE,
                                   related_name='news_post')
     ip = models.GenericIPAddressField(verbose_name='Ip address')
 
     class Meta:
-        verbose_name = 'Новости просмотры'
-        verbose_name_plural = 'Новости просмотры'
+        verbose_name = 'Habaralryn gorlen sany'
+        verbose_name_plural = 'Habaralryn gorlen sany'

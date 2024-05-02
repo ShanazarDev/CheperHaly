@@ -50,4 +50,4 @@ class NewsRSS(Feed):
                                         'image/{}'.format(item.image.name.split('.')[-1]))]
 
     def item_link(self, item):
-        return reverse("news_one", args=[item.slug_title])
+        return reverse("news_general:news_slug", args=[item.slug_title])

@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load background_tag %}
+
+{% block title %}
+    News
+{% endblock %}
+
+{% block active_news %}
+    active
+{% endblock %}
+
+{#{% block lang_tm %}#}
+{#    {% url 'news' %}#}
+{#{% endblock %}#}
+{##}
+{#{% block lang_ru %}#}
+{#    {% url 'news_ru' %}#}
+{#{% endblock %}#}
+
+{% block body %}
+    {% back_home True True %}
+    <div class="container container-fluid">
+        <div class="row justify-content-sm-center">
+            <div class="col-sm-12 col-xxl-11">
+                <h2 class="text-white">{% trans "News" %}</h2>
+                <ul class="breadcrumbs-custom">
+                    <li>
+                        <a href="{% url 'home' %}">{% trans "Home" %}</a>
+                    </li>
+                    <li class="active">{% trans "All News" %}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </section>
+    <div class="container py-4 py-xl-5">
+        <h2>{% trans "Top News" %}</h2>
+        <div class="carousel slide pt-4" data-bs-ride="carousel" id="carousel-1" style="height: 600px;">
+            <div class="carousel-inner h-100">
+                <div class="carousel-item active h-100"><img class="w-100 d-block position-absolute h-100 fit-cover"
+                                                             src="{{ top_1.image.url }}"
+                                                             alt="Slide Image"
+                                                             style="z-index: -1;backdrop-filter: blur(0px);filter: blur(20px);">
+                    <div class="container d-flex flex-column justify-content-center h-100">
+                        <div class="row">
+                            <div class="col-md-6 col-xl-4 offset-md-2">
+                                <div style="max-width: 350px;filter: blur(0px);backdrop-filter: blur(0px);">
+                                    <h3 class="text-uppercase fw-bold text-white">
+                                        {{ top_1.title|truncatewords:5 }}
+                                    </h3>
+                                    <p class="my-3 text-white-50">
+                                        {{ top_1.short_description|truncatewords:10 }}
+                                        <br>
+                                        {% if top_1.views_count %}
+                                            &#128064;: {{ top_1.news_post.count }}
+                                            <br>
+                                        {% endif %}
+                                        {{ top_1.date }}
+                                    </p>
+                                    <a class="button button-effect-ujarak button-lg button-primary-2 button-square"
+                                       role="button" href="{% url 'news_general:news_slug' title=top_1.slug_title %}">
+                                        <span class="text-dark">
+                                            {% trans "Read" %}
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item  h-100"><img class="w-100 d-block position-absolute h-100 fit-cover"
+                                                       src="{{ top_2.image.url }}"
+                                                       alt="Slide Image"
+                                                       style="z-index: -1;backdrop-filter: blur(0px);filter: blur(20px);">
+                    <div class="container d-flex flex-column justify-content-center h-100">
+                        <div class="row">
+                            <div class="col-md-6 col-xl-4 offset-md-2">
+                                <div style="max-width: 350px;filter: blur(0px);backdrop-filter: blur(0px);">
+                                    <h3 class="text-uppercase fw-bold text-white">
+                                        {{ top_2.title|truncatewords:5 }}
+                                    </h3>
+                                    <p class="my-3 text-white-50">
+                                        {{ top_2.short_description|truncatewords:10 }}
+                                        <br>
+                                        {% if top_2.views_count %}
+                                            &#128064;: {{ top_2.news_post.count }}
+                                            <br>
+                                        {% endif %}
+                                        {{ top_2.date }}
+                                    </p>
+                                    <a class="button button-effect-ujarak button-lg button-primary-2 button-square"
+                                       role="button" href="{% url 'news_general:news_slug' title=top_2.slug_title %}">
+                                        <span class="text-dark">
+                                            {% trans "Read" %}
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span
+                    class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a
+                    class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span
+                    class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="1"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container py-4 py-xl-5 mt-0">
+        <div class="row">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2>{% trans "News" %}</h2>
+                <p class="w-lg-50 mt-2" style="font-size: 22px;">
+                    {% trans "Here you can find the latest news about Turkmenistan" %}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for all in all_news %}
+                <div class="col-md-3 mt-0">
+                    <div class="w-100">
+                        <div class="img-fluid border rounded-3 blurIn"
+                             style="height: 250px; margin-top: 20px;
+                                     background: url({{ all.image.url }}) center / cover;
+                                     padding-left: 12px;padding-right: 12px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 text-break">
+                    <br>
+                    <h4>{{ all.title }}</h4>
+                    <br>
+                    <p>
+                        {{ all.short_description }}
+                        {% if all.views_count %}
+                            <br>
+                            &#128064;: {{ all.news_post.count }}
+                        {% endif %}
+                    </p>
+                    <p>
+                        {{ all.date }}
+                    </p>
+                    <a class="mt-2 button button-effect-ujarak button-sm button-primary-2 button-square"
+                       role="button" href="{% url 'news_general:news_slug' title=all.slug_title %}">
+                                <span class="text-dark">
+                                    {% trans "Read" %}
+                                </span>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <style>
+        h1, h2, h3, p, span {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+    {#    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>#}
+
+{% endblock %}

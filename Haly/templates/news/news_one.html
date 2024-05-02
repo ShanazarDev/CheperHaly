@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+    {% for n in news %}
+        {{ n.title|truncatewords:3 }}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_og_title %}
+    {% for n in news %}
+        {{ n.title }}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_description %}
+    {% for n in news %}
+        {{ n.short_description }}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_og_description %}
+    {% for n in news %}
+        {{ n.short_description|truncatewords:7 }}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_keywords %}
+    {% for n in news %}
+        {% if n.meta_tags_keywords %}
+            {{ n.meta_tags_keywords }}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_og_url %}
+    {% for n in news %}
+        {% url 'news_general:news_slug' title=n.slug_title %}
+    {% endfor %}
+{% endblock %}
+
+{% block active_news %}
+    active
+{% endblock %}
+
+{#{% block lang_tm %}#}
+{#    {% for n in news %}#}
+{#        {% url 'news_one' title=n.slug_title %}#}
+{#    {% endfor %}#}
+{#{% endblock %}#}
+{##}
+{#{% block lang_ru %}#}
+{#    {% for n in news %}#}
+{#        {% url 'news_ru_one' title=n.slug_title_ru %}#}
+{#    {% endfor %}#}
+{#{% endblock %}#}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-xxl-12">
+                <section>
+                    {% for n in news %}
+                        <div class="img-fluid border rounded-3 blurIn"
+                             style="height: 450px; margin-top: 20px;
+                                     background: url({{ n.image.url }}) center / cover;
+                                     padding-left: 12px;padding-right: 12px;">
+                        </div>
+                    {% endfor %}
+                </section>
+            </div>
+            <div class="col-md-4 col-xxl-12">
+                <section class="photo-gallery py-4 py-xl-5">
+                    <div class="container">
+                        {% for n in news %}
+                            <div class="row mb-5">
+                                <div class="col-md-8 col-xl-6 text-break text-center text-dark mx-auto">
+                                    <h3>{{ n.title }}</h3>
+                                    <p class="w-lg-50">{{ n.short_description }}</p>
+                                    {% if n.views_count %}
+                                        <span>
+                                            &#128064;: {{ n.news_post.count }}
+                                        </span><br>
+                                    {% endif %}
+                                    <span>
+                                        {{ n.date }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="container container-fluid w-100 text-break">
+                                {{ n.text|safe }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+            <div class="container">
+                <h3 class="mt-3 mb-3" style="font-family:'Poppins', sans-serif;">
+                    {% trans "Recent News:" %}</h3>
+                <div class="row">
+                    {% for r in recent_news %}
+                        <div class="col-md-4 cust_blogteaser" style="padding-bottom: 20px;margin-bottom: 32px;"><a
+                                href="{% url 'news_general:news_slug' title=r.slug_title %}">
+                            <img class="img-fluid" style="height:300px; width: 300px; object-fit: cover;"
+                                 src="{{ r.image.url }}" alt="img" loading="lazy"></a>
+                            <h5>
+                                {{ r.title }}
+                                <br>
+                            </h5>
+                            <p class="text-secondary">
+                                {{ r.short_description }}
+                            </p>
+                            {% if r.views_count %}
+                                <span>
+                                        &#128064;: {{ r.news_post.count }}
+                                </span>
+                            {% endif %}
+                            <p>
+                                {{ r.date }}
+                            </p>
+                            <a class="mt-2 button button-effect-ujarak button-xs button-primary-2 button-square"
+                               role="button" href="{% url 'news_general:news_slug' title=r.slug_title %}">
+                                    <span class="text-dark">
+                                        {% trans "Read" %}
+                                    </span>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

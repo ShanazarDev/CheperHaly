@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+<html data-bs-theme="light" lang="{{ LANGUAGE_CODE }}" class="wide wow-animation">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="robots" content="index,follow">
+    <meta name="keywords" content="{% spaceless %}{% block meta_keywords %} {% endblock %}{% endspaceless %}">
+    <meta name="description"content="{% spaceless %}{% block meta_description %} {% trans "Turkmen Carpet" %} {% endblock %}{% endspaceless %}">
+    <meta property="og:site_name" content="Turkmen Carpet">
+    <meta property="og:title"content="{% spaceless %}{% block meta_og_title %} {% trans "Turkmen Carpet" %} {% endblock %}{% endspaceless %}">
+    <meta property="og:description"content="{% spaceless %}{% block meta_og_description %} {% trans "Turkmen Carpet Museum" %} {% endblock %}{% endspaceless %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url"content="{% spaceless %}{% block meta_og_url %} {% endblock %}{% endspaceless %}">
+
+    <title>{% block title %} {% trans "Turkmen Carpet" %} {% endblock %}</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic%7CPoppins:300,400,500,700">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Projects-Grid-images.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    {% block style %}
+
+    {% endblock %}
+</head>
+<body style="font-family: 'Poppins', sans-serif;">
+<div class="text-center page">
+    <header class="page-header" style="padding-bottom:10px;">
+        <div class="rd-navbar-wrap">
+            <nav class="rd-navbar rd-navbar-default-with-top-panel" data-layout="rd-navbar-fixed"
+                 data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed"
+                 data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-fullwidth"
+                 data-xl-layout="rd-navbar-fullwidth" data-xxl-layout="rd-navbar-fullwidth"
+                 data-lg-device-layout="rd-navbar-fixed" data-xl-device-layout="rd-navbar-fullwidth"
+                 data-md-stick-up-offset="90px" data-lg-stick-up-offset="150px" data-stick-up="true"
+                 data-sm-stick-up="true" data-md-stick-up="true" data-lg-stick-up="true">
+                <div class="rd-navbar-top-panel rd-navbar-collapse pt-1 pb-2">
+                    <div class="d-xxl-flex justify-content-xxl-center align-items-xxl-center rd-navbar-top-panel-inner">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col d-xxl-flex justify-content-xxl-start align-items-xxl-center">
+                                    <div class="dropdown">
+                                        <button class="btn dropdown-toggle" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                            {{ LANGUAGE_CODE|upper }}
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            {% for language in languages %}
+                                                <li>
+                                                    {% if LANGUAGE_CODE == 'tk' %}
+                                                        {% if language.code == 'tk' %}
+                                                        <a href="/{{ request.get_full_path|slice:"1:" }}" class="selected dropdown-item">{{ language.code|upper }}</a>
+                                                        {% else %}
+                                                        <a href="/{{ language.code }}/{{ request.get_full_path|slice:"1:" }}" class="selected dropdown-item">{{ language.code|upper }}</a>
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if language.code == 'tk' %}
+                                                        <a href="/{{ request.get_full_path|slice:"4:" }}" class="selected dropdown-item">{{ language.code|upper }}</a>
+                                                        {% else %}
+                                                        <a href="/{{ language.code }}/{{ request.get_full_path|slice:"4:" }}" class="selected dropdown-item">{{ language.code|upper }}</a>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-6 center-side" style="padding-right: 30px">
+                                    <div class="rd-navbar-brand fullwidth-brand">
+                                        <a class="brand-name" href="{% url 'home' %}">
+                                            <img src="{% static 'images/turkmenhaly_logo.png' %}" alt="logo" width="130"
+                                                 height="50">
+                                        </a>
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class="col d-xxl-flex justify-content-xxl-end align-items-xxl-center">
+                                    <div class="contact-info">
+                                        <div class="flex-row align-items-center unit unit-spacing-xs">
+                                            <div class="unit__left">
+                                                <span class="icon icon-primary text-middle mdi mdi-phone"></span>
+                                            </div>
+                                            <div class="unit__body">
+                                                <a href="tel:+99365555555" class="text-middle">
+                                                    +993 65 55 55 55
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rd-navbar-inner">
+                    <div class="rd-navbar-panel">
+                        <button class="rd-navbar-toggle"
+                                data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                        <button
+                                class="rd-navbar-collapse-toggle"
+                                data-rd-navbar-toggle=".rd-navbar-collapse"><span></span></button>
+                        <div class="rd-navbar-brand mobile-brand">
+                            <a class="brand-name"
+                               style="font-family: 'Poppins', sans-serif;"
+                               href="{% url 'home' %}">
+                                <img
+                                        src="{% static 'images/turkmenhaly_logo.png' %}" alt="turkmenhalylogo"
+                                        width="50"
+                                        height="50">
+                                {% block logo %}
+                                    {% trans "Turkmen Carpet" %}
+                                {% endblock %}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="rd-navbar-aside-right">
+                        <div class="rd-navbar-nav-wrap">
+                            <div class="rd-navbar-nav-scroll-holder">
+                                <ul class="rd-navbar-nav" style="margin-left: 0;">
+                                    <li class="rd-nav-item
+                                    {% block active_main %}
+
+                                    {% endblock %}">
+                                        <a class="rd-nav-link"
+                                           href="{% url 'home' %}">
+                                            {% trans "Home" %}
+                                        </a>
+                                    </li>
+                                    <li class="rd-nav-item {% block active_about_us %}
+
+                                    {% endblock %}">
+                                        <a class="rd-nav-link" href="{% url 'about_us' %}">
+                                            {% trans "About Us" %}
+                                        </a>
+                                    </li>
+                                    <li class="rd-nav-item {% block active_news %}
+
+                                    {% endblock %}">
+                                        <a class="rd-nav-link" href="{% url 'news_general:news_all' %}">
+                                            {% trans "News" %}
+                                        </a>
+                                    </li>
+                                    <li class="rd-nav-item {% block active_carpet %}
+
+                                    {% endblock %}">
+                                        <a class="rd-nav-link" href="{% url 'gallery_general:gallery' %}">
+                                            {% trans "Carpets" %}
+                                        </a>
+                                    </li>
+                                    <li class="rd-nav-item {% block active_blog %}
+
+                                    {% endblock %}">
+                                        <a class="rd-nav-link" href="{% url 'blogs_general:blogs' %}">
+                                            {% trans "Blogs" %}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    {% block body %}
+
+
+    {% endblock %}
+
+
+    <div class="bg-image mt-2"
+         style="background-image: url({% static 'images/gol_stripe.png' %});
+                 height: 35px;
+                 width: 100%"></div>
+    <footer id="contacts" class="object-wrap-map bg-gray-dark text-left">
+        <div id="us_contact" class="container-fluid">
+            <div class="row justify-content-md-end">
+                <div class="col">
+                    <div class="container container-fluid w-100 h-100 mt-1 p-0">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8122.800209809775!2d58.38648644732334!3d37.926587308806816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f6ffdf148da3897%3A0xdea13fd9948edee4!2zVMO8cmttZW4gaGFseXN5bnnFiCBtaWxsaSBtdXplw71p!5e0!3m2!1sru!2s!4v1694974511530!5m2!1sru!2s"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="page-footer-corporate-inner">
+                        <div class="row page-footer-corporate-top row-60">
+                            <div class="col-md-6 col-lg-12">
+                                <h5>{% trans "Our Contacts" %}</h5>
+                                <hr class="divider divider-sm divider-left">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <dl class="list-desc">
+                                            <dt class="text-middle">
+                                                <span class="icon icon-sm mdi mdi-map-marker"></span>
+                                            </dt>
+                                            <dd class="text-middle">
+                                                <a class="link link-md"
+                                                   href="https://goo.gl/maps/T3eXEuMkJs92DeWL9">
+                                                    Atamyrat
+                                                    Nyýazow şaýoly, Aşgabat ş.
+                                                </a>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <div class="group-sm">
+                                            <dl class="list-desc">
+                                                <dt class="text-middle">
+                                                    <span
+                                                            class="icon icon-sm mdi mdi-phone"></span>
+                                                </dt>
+                                                <dd class="text-middle">
+                                                    <a href="tel:+99365555555"
+                                                       class="link link-md">
+                                                        +993 65 55 55 55
+                                                    </a>
+                                                </dd>
+                                            </dl>
+                                            <dl class="list-desc">
+                                                <dt class="text-middle">
+                                                    <span
+                                                            class="icon icon-sm mdi mdi-email-outline"></span>
+                                                </dt>
+                                                <dd class="text-middle">
+                                                    <a class="link" href="mailto:#">
+                                                        info@turkmenhaly.com.tm
+                                                    </a>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-lg-12">
+                                <h5>{% trans "Work time" %}</h5>
+                                <hr class="divider divider-sm divider-left">
+                                <div class="group">
+                                    <dl class="list-desc">
+                                        <dt>{% trans "Mn-Fr" %}:</dt>
+                                        <dd><span>09:00–18:00</span></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-12">
+                                <h5>{% trans "Links" %}</h5>
+                                <hr class="divider divider-sm divider-left">
+                                <ul class="nav-list list-column-3">
+                                    <li>
+                                        <a class="link" href="{% url 'home' %}#home">{% trans "Home" %}</a>
+                                    </li>
+                                    <li>
+                                        <a class="link" href="{% url 'about_us' %}">{% trans "About us" %}</a>
+                                    </li>
+                                    <li>
+                                        <a class="link"
+                                           href="{% url 'gallery_general:gallery' %}">{% trans "Carpets" %}</a>
+                                    </li>
+                                    <li>
+                                        <a class="link" href="{% url 'home' %}#gallery">{% trans "All Carpets" %}</a>
+                                    </li>
+                                    <li>
+                                        <a class="link" href="#us_contact">{% trans "Contacts" %}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="page-footer-corporate-bottom">
+                            <p class="rights"> TurkmenHaly ©&nbsp;<span class="copyright-year"></span>.&nbsp;<br
+                                    class="d-md-none"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<style>
+    h1, h2, h3, h4, h5 {
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
+<div class="snackbars" id="form-output-global"></div>
+<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/core.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

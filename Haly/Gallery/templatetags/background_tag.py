@@ -4,7 +4,7 @@ from ..models import HomeBackgroundModel
 register = template.Library()
 
 
-@register.inclusion_tag('en/background.html')
+@register.inclusion_tag('en/../../templates/background.html')
 def back_home(lg: bool = False, section: bool = False):
     back = HomeBackgroundModel.objects.last()
 

@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load background_tag %}
+
+{% block title %}
+    {% trans "Our Carpets" %}
+{% endblock %}
+
+{% block active_carpet %}
+    active
+{% endblock %}
+
+{#{% block lang_tm %}#}
+{#	{% url 'gallery' %}#}
+{#{% endblock %}#}
+{##}
+{#{% block lang_ru %}#}
+{#	{% url 'gallery_ru' %}#}
+{#{% endblock %}#}
+
+{% block body %}
+    <main>
+        <!-- Breadcrumbs & Page title-->
+
+        {% back_home True True %}
+
+        <div class="container container-fluid">
+            <div class="row justify-content-sm-center">
+                <div class="col-sm-12 col-xxl-11">
+                    <h2 class="text-white">{% trans "Carpets" %}</h2>
+                    <ul class="breadcrumbs-custom">
+                        <li>
+                            <a href="{% url 'home' %}">{% trans "Home" %}</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'home' %}#gallery">{% trans "Carpets" %}</a>
+                        </li>
+                        <li class="active">{% trans "All Carpets" %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <section class="section-lg-top bg-gray-light text-center">
+            <div class="isotope-wrap">
+                <ul class="isotope-filters-responsive">
+                    <li>
+                        <p>{% trans "Chose category:" %}</p>
+                    </li>
+                    <li class="block-top-level">
+                        <!-- Isotope Filters-->
+                        <button class="isotope-filters-toggle button button-sm button-primary"
+                                data-custom-toggle="#isotope-1" data-custom-toggle-hide-on-blur="true">
+                            {% trans "Filter" %}
+                            <span class="caret"></span>
+                        </button>
+                        <div class="isotope-filters" id="isotope-1">
+                            <ul class="inline-list">
+                                <li>
+                                    <a class="active" data-isotope-filter="*" data-isotope-group="gallery"
+                                       href="#">{% trans "All" %}</a>
+                                </li>
+                                <li>
+                                    <a data-isotope-filter="Category 1" data-isotope-group="gallery"
+                                       href="#">{% trans "Big Carpets" %}</a>
+                                </li>
+                                <li>
+                                    <a data-isotope-filter="Category 2" data-isotope-group="gallery" href="#">
+                                        {% trans "Products from Carpet" %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-isotope-filter="Category 3" data-isotope-group="gallery"
+                                       href="#">
+                                        {% trans "Accessories" %}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <!-- Isotope Content-->
+                <div class="row isotope row-no-gutter" data-isotope-layout="fitRows" data-isotope-group="gallery"
+                     data-lightgallery="group">
+                    {% for g in gallery %}
+                        <div class="col-12 col-md-6 col-lg-4 isotope-item" data-filter="{{ g.category }}">
+                            <a
+                                    class="thumbnail-classic"
+                                    href="{{ g.image.url }}"
+                                    data-lightgallery="item">
+                                <figure>
+                                    <img src="{{ g.image.url }}" alt="{{ g.name }}" class="p-2"
+                                         style="width: 640px; height: 426px; object-fit: cover" loading="lazy"/>
+                                </figure>
+                                <div class="caption">
+                                    <p class="caption-title">{{ g.name }}</p>
+                                    <p class="caption-text">{{ g.description }}</p>
+                                    {% if g.size_of_carpet %}
+                                        <p class="caption-text">{{ g.size_of_carpet }}</p>
+                                    {% endif %}
+                                    {% if g.price %}
+                                        <p class="caption-text">{{ g.price }} TMT</p>
+                                    {% endif %}
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

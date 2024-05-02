@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+    {% for b in blog %}
+        {{ b.title|truncatewords:3 }}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_og_title %}
+    {% for b in blog %}
+        {{ b.title }}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_description %}
+    {% for b in blog %}
+        {{ b.short_description }}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_og_description %}
+    {% for b in blog %}
+        {{ b.short_description|truncatewords:7 }}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_keywords %}
+    {% for b in blog %}
+        {% if b.meta_tags_keywords %}
+            {{ b.meta_tags_keywords }}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block meta_og_url %}
+    {% for b in blog %}
+        {% url 'blogs_general:blog_slug' title=b.slug_title %}
+    {% endfor %}
+{% endblock %}
+
+
+{% block active_blog %}
+    active
+{% endblock %}
+
+{#{% block lang_tm %}#}
+{#    {% for b in blog %}#}
+{#        {% url 'blog_post' title=b.slug_title %}#}
+{#    {% endfor %}#}
+{#{% endblock %}#}
+{##}
+{#{% block lang_ru %}#}
+{#    {% for b in blog %}#}
+{#        {% url 'blog_ru_post' title=b.slug_title_ru %}#}
+{#    {% endfor %}#}
+{#{% endblock %}#}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-xxl-12">
+                <section>
+                    {% for b in blog %}
+                        <div class="img-fluid border rounded-3 blurIn"
+                             style="height: 450px; margin-top: 20px;
+                                     background: url({{ b.image.url }}) center / cover;
+                                     padding-left: 12px;padding-right: 12px;">
+                        </div>
+                    {% endfor %}
+                </section>
+            </div>
+            <div class="col-md-4 col-xxl-12">
+                <section class="photo-gallery py-4 py-xl-5">
+                    <div class="container">
+                        {% for b in blog %}
+                            <div class="row mb-5">
+                                <div class="col-md-8 col-xl-6 text-break text-center text-dark mx-auto">
+                                    <h3>
+                                        {{ b.title }}
+                                    </h3>
+                                    <p class="w-lg-50">
+                                        {{ b.short_description }}
+                                    </p>
+                                    {% if b.views_count %}
+                                        <span>
+                                            &#128064;: {{ b.blog_ip.count }}
+                                        </span>
+                                    {% endif %}
+                                    <p>
+                                        {{ b.date }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="container container-fluid w-100 text-break">
+                                {{ b.text|safe }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+            <div class="container mb-3">
+                <h3>{% trans "Read more:" %}</h3>
+                <div class="cust_bloglistintro">
+                    <p style="margin-left:34px;color:rgba(255,255,255,0.5);font-size:14px;"></p>
+                </div>
+                <div class="row">
+                    {% for a in all_blogs %}
+                        <div class="col-md-4 cust_blogteaser" style="padding-bottom: 20px;margin-bottom: 32px;">
+                            <a href="{% url 'blogs_general:blog_slug' title=a.slug_title %}">
+                                <img class="img-fluid rounded" style="height:300px; width: 300px; object-fit: cover;"
+                                     src="{{ a.image.url }}"
+                                     alt="{{ a.title }}"
+                                     loading="lazy">
+                            </a>
+                            <h3 class="pt-2">
+                                {{ a.title }}
+                            </h3>
+                            <p class="text-secondary">
+                                {{ a.short_description }}
+                            </p>
+                            {% if a.views_count %}
+                                <span>
+                                    &#128064;: {{ a.blog_ip.count }}
+                                </span>
+                            {% endif %}
+                            <br>
+                            <span>
+                                {{ a.date }}
+                            </span><br>
+                            <a class="mt-2 button button-effect-ujarak button-xs button-primary-2 button-square"
+                               role="button" href="{% url 'blogs_general:blog_slug' title=a.slug_title %}">
+                                    <span class="text-dark">
+                                        {% trans "Read" %}
+                                    </span>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
