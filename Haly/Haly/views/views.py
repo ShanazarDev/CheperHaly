@@ -7,7 +7,7 @@ from Blog.models import BlogModel
 def home(req: django.http.HttpRequest):
     blog = BlogModel.objects.all()
     gallery = GalleryHomeModel.objects.all()
-    if blog:
+    if blog and gallery:
         gallery_big_carpet = gallery.filter(category='tabs-2-1').all()[:3]
         gallery_products = gallery.filter(category='tabs-2-2').all()[:3]
         gallery_accessories = gallery.filter(category='tabs-2-3').all()[:3]

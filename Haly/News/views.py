@@ -18,8 +18,8 @@ def news(req):
 
 def news_one(req, title):
     news_all = NewsModel.objects.all()
-    filtered_news = news_all.filter(slug_title_en=title).all()
-    recent_news = news_all.order_by('-pk').exclude(slug_title_en=title).all()[:3]
+    filtered_news = news_all.filter(slug_title=title).all()
+    recent_news = news_all.order_by('-pk').exclude(slug_title=title).all()[:3]
     NewsViewModel.objects.update_or_create(news_post=NewsModel.objects.get(pk=[f.pk for f in filtered_news][0]),
                                            ip=req.META.get('REMOTE_ADDR'))
     context = {

@@ -5,5 +5,5 @@ app_name = "blogs_general"
 
 urlpatterns = [
     path("", blogs, name="blogs"),
-    path("<slug:slug>", blog_post, name="blog_slug")
+    path("<slug:title>", blog_post, name="blog_slug")
 ]

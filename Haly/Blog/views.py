@@ -18,8 +18,8 @@ def blogs(req):
 
 def blog_post(req, title):
     blogs_all = BlogModel.objects.all()
-    recent_blogs = blogs_all.order_by('-pk').exclude(slug_title_en=title).all()[:3]
-    blog = blogs_all.filter(slug_title_en=title).all()
+    recent_blogs = blogs_all.order_by('-pk').exclude(slug_title=title).all()[:3]
+    blog = blogs_all.filter(slug_title=title).all()
     blog_pk = BlogModel.objects.get(pk=[b.pk for b in blog][0])
     BlogViewsModel.objects.update_or_create(blog_foreign=blog_pk,
                                             views_ip=req.META.get('REMOTE_ADDR'))
